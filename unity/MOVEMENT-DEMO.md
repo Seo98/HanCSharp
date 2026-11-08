@@ -2,7 +2,7 @@
 
 ## 바로 실행
 
-Windows 실행 ZIP의 **START-HAN.cmd → ② Unity 이동 예제 준비·실행**을 누르세요. 기본적으로 문서 폴더의 `HanCSharp/MovementDemo-0.5.0`에 준비하고, Unity 6000.3.25f1로 이동 씬까지 엽니다. Unity는 별도로 설치해야 합니다. Play를 누른 다음 Game 화면을 클릭하세요. 저장 위치는 시작 창에서 바꿀 수 있습니다. [설치·긴 경로 안내](../docs/QUICKSTART.md)
+Windows 실행 ZIP의 **START-HAN.cmd → ② Unity 이동 예제 준비·실행**을 누르세요. 기본적으로 문서 폴더의 `HanCSharp/MovementDemo-0.5.1`에 준비하고, Unity 6000.3.25f1로 이동 씬까지 엽니다. Unity는 별도로 설치해야 합니다. Play를 누른 다음 Game 화면을 클릭하세요. 저장 위치는 시작 창에서 바꿀 수 있습니다. [설치·긴 경로 안내](../docs/QUICKSTART.md)
 
 - W / ↑: 앞쪽(+Z)
 - S / ↓: 뒤쪽(-Z)
