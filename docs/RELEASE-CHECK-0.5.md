@@ -36,3 +36,11 @@ PowerShell 설치 래퍼와 네이티브 CLI 종료 코드 및 UTF-8 출력을 �
 Unity와 Visual Studio는 별도 설치 대상이다. Unity 6000.3.25f1이 설치되지 않았으면 시작 창에서 `Unity.exe`를 선택하거나 Unity Hub로 준비된 프로젝트를 열어야 한다. Unity의 최초 패키지 다운로드에는 인터넷이 필요하다. 새 PC에서 운영체제부터 설치한 검증은 아니며, 기존 Unity·Visual Studio가 있는 이 Windows 환경에서 새 폴더로 확인했다. VSIX의 기능은 이전 실제 VS 검증과 이번 12개 회귀 검증에 근거하며, v0.5.0에서 VSIX 자체는 변경하지 않았다.
 
 이전 배포에서 발견한 긴 경로 오류와 경고의 원인은 [v0.4.0 기록](RELEASE-CHECK.md)에 남겨 두었다.
+
+## 공개 후 재다운로드 확인
+
+[v0.5.0 공개 Release](https://github.com/Seo98/HanCSharp/releases/tag/v0.5.0)에서 인증 없이 Windows ZIP과 SHA256SUMS.txt를 다시 받았다. ZIP의 SHA-256은 `86296d5ae11552ec883c10aa0103ed3bf6ddb9d528bf8d2ec94b46ccc1e4fb99`이며 첨부 해시와 일치했다.
+
+새로운 깊은 한글 폴더에 풀어 네이티브 시작 창의 한글 콘솔 출력과 내장 가이드 버튼을 확인했다. 공개 ZIP의 도구로 별도의 짧은 프로젝트 폴더를 새로 준비했고 런타임 복사·씬 열기 요청·반복 준비 시 파일 보존이 통과했다. 템플릿에 Pipeline이 포함되지 않는 것도 확인했다.
+
+[GitHub Windows 빌드](https://github.com/Seo98/HanCSharp/actions/runs/42478028665)도 성공했다. 언어·완성·설치 검증, VSIX 빌드, 네이티브 시작 프로그램 및 Windows 실행 ZIP 빌드가 포함된다. 공개 첨부 ZIP의 로컬 실행 검증과 CI 산출물 빌드는 별도로 수행했다.
