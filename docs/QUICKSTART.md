@@ -5,7 +5,7 @@
 ## 1. 설치 없이 먼저 실행해 보기 (Windows x64)
 
 1. [GitHub Releases](https://github.com/Seo98/HanCSharp/releases/latest)에서 **HanCSharp-Windows-x64.zip**을 받습니다.
-2. ZIP을 **모두 압축 풀기**로 풉니다. ZIP 안에서 바로 실행하지 마세요.
+2. ZIP을 **모두 압축 풀기**로 `C:\HanCSharp` 같은 짧은 경로에 풉니다. ZIP 안에서 바로 실행하지 마세요. 깊은 하위 폴더에서는 Unity 패키지의 전체 경로가 길어져 가져오기 오류가 발생할 수 있습니다.
 3. **START-HAN.cmd**를 더블클릭합니다.
 4. 열린 창에 예제 결과가 자동으로 표시됩니다. **① 한씨 예제 바로 실행**을 누르면 다시 실행할 수 있습니다.
 
@@ -16,6 +16,8 @@ GitHub의 **Code → Download ZIP**은 개발용 소스입니다. 실행 파일�
 ## 2. Unity에 설치하기
 
 전제: Unity 프로젝트가 이미 있어야 합니다. 실제 확인한 버전은 Unity 6000.3.25f1입니다. Unity 자체의 다운로드·설치나 라이선스 활성화는 한씨 도구가 대신하지 않습니다.
+
+Unity를 처음 열면 패키지 다운로드·셰이더 가져오기에 시간이 걸릴 수 있습니다. URP Material upgrade 안내가 나오면 확인하고, 컴파일이 끝난 뒤 진행하세요. 처음 다운로드 검증 결과와 알려진 경고는 [배포본 검증 기록](RELEASE-CHECK.md)에 정리했습니다.
 
 1. 시작 창의 **② Unity 프로젝트에 설치**를 누릅니다.
 2. `Assets`, `Packages`, `ProjectSettings`가 있는 **프로젝트 맨 위 폴더**를 선택합니다. `Assets` 폴더 자체를 고르지 마세요.
@@ -62,6 +64,7 @@ Unity에서 한씨가 생성한 `.cs`를 더블클릭하거나 컴포넌트의 S
 | 편집기에 한씨 파일이 없음 | Include Han Files In Solution 후 프로젝트 다시 열기 |
 | 색상/완성이 없음 | VS 확장 설치 및 사용 상태 확인. .han 확장자 확인 |
 | 큐브가 안 움직임 | Play·Game 포커스·Input 참조·Move Speed 확인 |
+| URP 패키지 파일이 없다는 오류 | 경로가 너무 길지 않은지 확인. Library를 옮기지 말고 Assets/Packages/ProjectSettings/Tools를 짧은 경로의 새 폴더로 복사해 열기 |
 
 배포본에는 관리자 권한이나 시스템 설정 변경이 필요하지 않습니다. 조직의 실행 정책으로 스크립트가 차단되면 담당 관리자에게 문의하세요. Windows 보안 경고를 자동으로 우회하는 기능은 제공하지 않습니다.
 

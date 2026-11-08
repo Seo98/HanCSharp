@@ -11,7 +11,7 @@ dotnet publish src/HanCSharp.Cli -c Release -o app --self-contained false
 
 ## 바로 실행
 
-완성 예제 프로젝트 `HanCSharpMovementDemo`를 Unity Hub의 **Add → Add project from disk**로 등록합니다. Unity 6000.3.25f1에서 작성했습니다. `Assets/HanCSharp/Scenes/MovementDemo.unity`를 열고 Play를 누른 다음 Game 화면을 클릭하세요.
+실행 ZIP을 `C:\HanCSharp` 같은 짧은 경로에 풀고, 그 안의 **samples/UnityMovementDemo** 폴더를 Unity Hub의 **Add → Add project from disk**로 등록합니다. Unity 6000.3.25f1에서 작성했습니다. `Assets/HanCSharp/Scenes/MovementDemo.unity`를 열고 Play를 누른 다음 Game 화면을 클릭하세요. 깊게 중첩된 경로에서는 URP 패키지 가져오기 오류가 재현됐습니다.
 
 - W / ↑: 앞쪽(+Z)
 - S / ↓: 뒤쪽(-Z)
