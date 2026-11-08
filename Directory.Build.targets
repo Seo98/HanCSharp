@@ -1,0 +1,20 @@
+<Project>
+  <!-- Visual Studio와 dotnet CLI의 MSBuildSDKsPath가 다르므로 실제 .NET SDK 경로를 사용한다. -->
+  <PropertyGroup>
+    <HanRoslynDirectory>$(NetCoreRoot)sdk\$(NETCoreSdkVersion)\Roslyn\bincore\</HanRoslynDirectory>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeAnalysis">
+      <HintPath>$(HanRoslynDirectory)Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp">
+      <HintPath>$(HanRoslynDirectory)Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+  <Target Name="CheckHanRoslyn" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(HanRoslynDirectory)Microsoft.CodeAnalysis.CSharp.dll')"
+           Text=".NET SDK의 Roslyn을 찾지 못했습니다: $(HanRoslynDirectory). .NET 9 SDK 설치를 확인하세요." />
+  </Target>
+</Project>

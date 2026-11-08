@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <HanCompilerPath>$(MSBuildThisFileDirectory)..\..\src\HanCSharp.Cli\bin\$(Configuration)\net9.0\HanCSharp.Cli.dll</HanCompilerPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/HanCSharp.Cli/HanCSharp.Cli.csproj" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+  <Import Project="../../build/HanCSharp.targets" />
+</Project>

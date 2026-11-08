@@ -1,0 +1,15 @@
+가져오기 System.
+
+공개 봉인 클래스 HealthState:
+    비공개 필드 정수 _current는 100이다.
+    공개 속성 정수 Current는 _current이다.
+    공개 이벤트 Action<int>? Changed.
+
+    공개 함수 TakeDamage(정수 amount)는 없음:
+        만약 amount가 0보다 작으면:
+            실행 throw new ArgumentOutOfRangeException(nameof(amount)).
+        끝.
+        _current에 Math.Max(0, _current - amount)를 넣는다.
+        실행 Changed?.Invoke(_current).
+    끝.
+끝.

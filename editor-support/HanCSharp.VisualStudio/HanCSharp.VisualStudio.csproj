@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>HanCSharp.VisualStudio</AssemblyName>
+    <Version>0.3.0</Version>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <VisualStudioInstallPath Condition="'$(VisualStudioInstallPath)' == ''">$(ProgramFiles)\Microsoft Visual Studio\2022\Community</VisualStudioInstallPath>
+    <EditorAssemblyPath>$(VisualStudioInstallPath)\Common7\IDE\CommonExtensions\Microsoft\Editor</EditorAssemblyPath>
+    <PublicAssemblyPath>$(VisualStudioInstallPath)\Common7\IDE\PublicAssemblies</PublicAssemblyPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Shared/*.cs" Link="Shared/%(Filename)%(Extension)" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Microsoft.VisualStudio.CoreUtility"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.CoreUtility.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Data"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.Text.Data.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Logic"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.Text.Logic.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.Text.UI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.Text.UI.Wpf.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Editor"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.Editor.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Language.Intellisense"><HintPath>$(EditorAssemblyPath)\Microsoft.VisualStudio.Language.Intellisense.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop"><HintPath>$(PublicAssemblyPath)\Microsoft.VisualStudio.OLE.Interop.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop"><HintPath>$(PublicAssemblyPath)\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.15.0"><HintPath>$(PublicAssemblyPath)\Microsoft.VisualStudio.Shell.15.0.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Interop"><HintPath>$(PublicAssemblyPath)\Microsoft.VisualStudio.Interop.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Framework"><HintPath>$(PublicAssemblyPath)\Microsoft.VisualStudio.Shell.Framework.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

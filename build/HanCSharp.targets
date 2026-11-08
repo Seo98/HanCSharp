@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <HanCompilerPath Condition="'$(HanCompilerPath)' == ''">$(MSBuildThisFileDirectory)..\app\HanCSharp.Cli.dll</HanCompilerPath>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  <ItemGroup>
+    <HanSource Include="**\*.han" Exclude="bin\**;obj\**" />
+    <None Update="@(HanSource)" />
+  </ItemGroup>
+  <!-- F5뿐 아니라 Build에서도 변환한다. 중간 파일은 obj 아래에만 쓴다. -->
+  <Target Name="GenerateHanCSharp" BeforeTargets="CoreCompile" Condition="'$(DesignTimeBuild)' != 'true'">
+    <PropertyGroup>
+      <HanGeneratedDirectory>$(IntermediateOutputPath)HanGenerated\</HanGeneratedDirectory>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(HanCompilerPath)')" Text="한씨 실행 도구가 없습니다: $(HanCompilerPath). 패키지의 app 폴더를 확인하세요." />
+    <MakeDir Directories="$(HanGeneratedDirectory)%(HanSource.RecursiveDir)" />
+    <Exec Command="dotnet &quot;$(HanCompilerPath)&quot; to-cs &quot;%(HanSource.FullPath)&quot; &quot;$(HanGeneratedDirectory)%(HanSource.RecursiveDir)%(HanSource.Filename).g.cs&quot; --source-map --force"
+          StdOutEncoding="UTF-8" StdErrEncoding="UTF-8" UseUtf8Encoding="Always"
+          Condition="'@(HanSource)' != ''" />
+    <ItemGroup>
+      <Compile Include="@(HanSource->'$(HanGeneratedDirectory)%(RecursiveDir)%(Filename).g.cs')" />
+      <FileWrites Include="@(HanSource->'$(HanGeneratedDirectory)%(RecursiveDir)%(Filename).g.cs')" />
+    </ItemGroup>
+  </Target>
+</Project>

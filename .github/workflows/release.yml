@@ -1,0 +1,30 @@
+name: Build Windows release
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      - name: Validate language
+        shell: pwsh
+        run: dotnet run --project tests/HanCSharp.Tests
+      - name: Validate completion catalog
+        shell: pwsh
+        run: dotnet run --project editor-support/EditorSupport.Tests
+      - name: Build Visual Studio extension
+        shell: pwsh
+        run: ./editor-support/Build-Extension.ps1
+      - name: Build release ZIP
+        shell: pwsh
+        run: ./tools/Build-Release.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HanCSharp-Windows-x64
+          path: artifacts/HanCSharp-Windows-x64.zip
+          if-no-files-found: error

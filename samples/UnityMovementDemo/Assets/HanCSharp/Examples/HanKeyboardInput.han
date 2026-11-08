@@ -1,0 +1,68 @@
+가져오기 UnityEngine.
+
+// 키보드 상태를 이동 입력으로 바꿉니다. 오브젝트 위치는 수정하지 않습니다.
+공개 봉인 클래스 HanKeyboardInput는 MonoBehaviour를 상속한다:
+    비공개 필드 벡터2 _moveValue는 Vector2.zero이다.
+    공개 속성 벡터2 MoveValue는 _moveValue이다.
+
+    비공개 함수 Update()는 없음:
+        _moveValue에 Vector2.zero를 넣는다.
+        만약 Application.isFocused == false이면:
+            반환.
+        끝.
+        _moveValue에 Vector2.ClampMagnitude(ReadKeyboard(), 1f)를 넣는다.
+    끝.
+
+    비공개 함수 OnDisable()는 없음:
+        _moveValue에 Vector2.zero를 넣는다.
+    끝.
+
+    // 입력 백엔드별 API 차이만 C# 원문으로 분리합니다. Both이면 새 입력을 한 번만 읽습니다.
+```csharp
+    private static Vector2 ReadKeyboard()
+    {
+        Vector2 value = Vector2.zero;
+#if ENABLE_INPUT_SYSTEM
+        var keyboard = UnityEngine.InputSystem.Keyboard.current;
+        if (keyboard == null)
+        {
+            return value;
+        }
+        if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
+        {
+            value.x -= 1f;
+        }
+        if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
+        {
+            value.x += 1f;
+        }
+        if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed)
+        {
+            value.y -= 1f;
+        }
+        if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed)
+        {
+            value.y += 1f;
+        }
+#elif ENABLE_LEGACY_INPUT_MANAGER
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            value.x -= 1f;
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            value.x += 1f;
+        }
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            value.y -= 1f;
+        }
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            value.y += 1f;
+        }
+#endif
+        return value;
+    }
+```
+끝.

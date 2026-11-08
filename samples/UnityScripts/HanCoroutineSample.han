@@ -1,0 +1,14 @@
+가져오기 UnityEngine.
+
+공개 봉인 클래스 HanCoroutineSample는 MonoBehaviour를 상속한다:
+    특성 SerializeField.
+    비공개 필드 단정도실수 _interval는 1f이다.
+
+    비공개 함수 Start()는 코루틴:
+        반복 차례는 3회:
+            기록 $"한씨 코루틴: {차례 + 1}".
+            기다린다 new WaitForSeconds(_interval).
+        끝.
+        양보종료.
+    끝.
+끝.

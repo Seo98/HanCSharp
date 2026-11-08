@@ -1,0 +1,15 @@
+```csharp
+using System.Collections.Generic;
+```
+
+자동 점수목록은 new List<int> { 10, 20, 30 }이다.
+정수 합계는 0이다.
+
+```csharp
+foreach (int 점수 in 점수목록)
+{
+    합계 += 점수;
+}
+```
+
+출력 합계.
