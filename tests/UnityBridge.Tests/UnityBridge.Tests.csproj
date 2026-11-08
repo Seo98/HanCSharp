@@ -5,6 +5,6 @@
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../../unity/Editor/*.cs" Link="Editor/%(Filename)%(Extension)" />
+    <Compile Include="../../unity/Editor/*.cs" Exclude="../../unity/Editor/HanCSharpDemoStartup.cs" Link="Editor/%(Filename)%(Extension)" />
   </ItemGroup>
 </Project>

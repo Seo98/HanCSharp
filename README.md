@@ -18,7 +18,7 @@
 
 ## 시작
 
-**처음이라면:** [실행 ZIP 받기](https://github.com/Seo98/HanCSharp/releases/latest) → 모두 압축 풀기 → **START-HAN.cmd** 더블클릭. 예제가 자동으로 실행됩니다.
+**처음이라면:** [실행 ZIP 받기](https://github.com/Seo98/HanCSharp/releases/latest) → 모두 압축 풀기 → **START-HAN.cmd** 더블클릭. 콘솔 예제가 자동으로 실행됩니다. 이어서 **② Unity 이동 예제 준비·실행**을 누르면 짧은 폴더에 프로젝트를 준비하고 이동 씬을 엽니다. Unity 6000.3.25f1은 별도 설치해야 합니다.
 
 Windows x64 실행 ZIP에는 .NET 런타임이 포함됩니다. Unity에 설치한 뒤 Project 창에서 **우클릭 → Create → HanCSharp → 한씨 컴포넌트**로 새 원본을 만들 수 있습니다.
 

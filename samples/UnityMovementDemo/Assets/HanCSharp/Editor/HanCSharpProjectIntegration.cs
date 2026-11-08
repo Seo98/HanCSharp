@@ -24,7 +24,11 @@ public static class HanCSharpProjectIntegration
     [OnOpenAsset]
     public static bool OpenHan(int instanceId, int line)
     {
-        string path = AssetDatabase.GetAssetPath(EditorUtility.InstanceIDToObject(instanceId));
+#if UNITY_6000_3_OR_NEWER
+        string path = AssetDatabase.GetAssetPath((EntityId)instanceId);
+#else
+        string path = AssetDatabase.GetAssetPath(instanceId);
+#endif
         // C# 진단의 구체적인 행으로 이동할 때는 해당 C# 위치를 유지한다.
         if (!string.IsNullOrEmpty(path) && path.EndsWith(".cs", StringComparison.OrdinalIgnoreCase) && line > 1)
             return false;

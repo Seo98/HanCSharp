@@ -1,4 +1,8 @@
 @echo off
 setlocal
-powershell.exe -NoProfile -STA -ExecutionPolicy Bypass -File "%~dp0tools\Start-Han.ps1"
-if errorlevel 1 pause
+if not exist "%~dp0launcher\HanCSharp.Start.exe" (
+  echo Please download and fully extract the Windows release ZIP.
+  pause
+  exit /b 1
+)
+start "" "%~dp0launcher\HanCSharp.Start.exe"

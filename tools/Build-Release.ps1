@@ -2,6 +2,8 @@
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $portable = Join-Path $root 'app-portable'
+& (Join-Path $PSScriptRoot 'Build-Launcher.ps1')
+& (Join-Path $PSScriptRoot 'Build-DemoTemplate.ps1')
 if (-not $SkipPublish) {
     & dotnet publish (Join-Path $root 'src\HanCSharp.Cli') -c Release -r win-x64 --self-contained true -o $portable --source https://api.nuget.org/v3/index.json -p:PublishTrimmed=false
     if ($LASTEXITCODE -ne 0) { throw 'Windows 런타임 포함 배포 빌드 실패' }
@@ -21,16 +23,13 @@ $excluded = @('bin','obj','.vs','.git','app','app-portable','artifacts','validat
 foreach ($file in Get-ChildItem -LiteralPath $root -Recurse -File -Force) {
     $relative = $file.FullName.Substring($root.Length).TrimStart('\','/')
     if (@($relative.Split([char[]]'\/') | Where-Object { $_ -in $excluded }).Count -gt 0) { continue }
+    if ($relative.StartsWith('samples\UnityMovementDemo\', [StringComparison]::OrdinalIgnoreCase) -and
+        $relative -notin @('samples\UnityMovementDemo\README.md','samples\UnityMovementDemo\VALIDATION.md')) { continue }
     $target = Join-Path $stage $relative
     New-Item -ItemType Directory -Path (Split-Path -Parent $target) -Force | Out-Null
     Copy-Item -LiteralPath $file.FullName -Destination $target
 }
 Copy-Item -LiteralPath $portable -Destination (Join-Path $stage 'app') -Recurse
-$demoTools = Join-Path $stage 'samples\UnityMovementDemo\Tools'
-if (Test-Path -LiteralPath (Join-Path $stage 'samples\UnityMovementDemo\Assets')) {
-    New-Item -ItemType Directory -Path $demoTools -Force | Out-Null
-    Copy-Item -LiteralPath $portable -Destination (Join-Path $demoTools 'HanCSharp') -Recurse
-}
 $zip = if ($OutputPath) { [IO.Path]::GetFullPath($OutputPath) } else { Join-Path $artifacts 'HanCSharp-Windows-x64.zip' }
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 if (Test-Path -LiteralPath $zip) { throw "출력 ZIP이 이미 있습니다. 기존 결과를 보관하고 다른 출력 경로를 지정하세요: $zip" }

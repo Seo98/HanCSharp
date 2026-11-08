@@ -63,6 +63,7 @@ namespace UnityEditor
     {
         private static readonly Dictionary<string, UnityEngine.Object> _assets = new();
         public static string GetAssetPath(UnityEngine.Object value) => "";
+        public static string GetAssetPath(int instanceId) => "";
         public static T LoadAssetAtPath<T>(string path) where T : UnityEngine.Object =>
             _assets.TryGetValue(path, out var value) ? value as T : null;
         public static void CreateAsset(UnityEngine.Object value, string path)

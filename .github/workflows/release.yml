@@ -20,6 +20,9 @@ jobs:
       - name: Build Visual Studio extension
         shell: pwsh
         run: ./editor-support/Build-Extension.ps1
+      - name: Validate installer and short-path preparation
+        shell: pwsh
+        run: dotnet run --project tools/Launcher.Tests -- C:\han-ci-check
       - name: Build release ZIP
         shell: pwsh
         run: ./tools/Build-Release.ps1

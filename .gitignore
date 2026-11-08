@@ -16,3 +16,5 @@ validation/
 *.user
 *.suo
 *.csproj.user
+/launcher/
+templates/*.zip

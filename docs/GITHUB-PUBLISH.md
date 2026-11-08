@@ -14,7 +14,7 @@ Windows에서 .NET 9 SDK, Visual Studio 2022와 .NET Framework 4.7.2 개발용 �
 .\tools\Build-Release.ps1
 ```
 
-`artifacts/HanCSharp-Windows-x64.zip`이 만들어집니다. .NET 런타임과 CLI, START-HAN 시작 창, Unity 생성 메뉴, VSIX, 예제·가이드·소스를 포함합니다. 처음 빌드할 때 공식 NuGet에서 Windows 런타임을 받으므로 인터넷 연결이 필요합니다. Roslyn을 사용하므로 trimming/AOT는 적용하지 않습니다.
+`artifacts/HanCSharp-Windows-x64.zip`이 만들어집니다. .NET 런타임과 CLI, 네이티브 START-HAN 시작 창, Unity 생성 메뉴, VSIX, 예제·가이드·소스를 포함합니다. Unity 프로젝트는 `templates/UnityMovementDemo.zip`에 넣고, 시작 창이 짧은 폴더에 준비합니다. 빌드 스크립트가 시작 프로그램과 템플릿도 자동 빌드합니다. 버전은 루트 `VERSION`으로 관리합니다. 처음 빌드할 때 공식 NuGet에서 Windows 런타임을 받으므로 인터넷 연결이 필요합니다. Roslyn을 사용하므로 trimming/AOT는 적용하지 않습니다.
 
 ## GitHub에서 배포하기
 

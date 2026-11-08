@@ -4,7 +4,9 @@
 
 ## 설치
 
-루트의 Install-Unity.ps1에 기존 Unity 프로젝트 경로를 전달합니다. 프로젝트는 자동 선택하지 않습니다.
+Windows 실행 ZIP에서는 **START-HAN.cmd → ③ 기존 Unity 프로젝트에 설치**를 눌러 프로젝트 루트를 고릅니다. 이동 예제만 먼저 체험하려면 **② Unity 이동 예제 준비·실행**을 누르세요.
+
+명령줄에서는 루트의 Install-Unity.ps1에 기존 Unity 프로젝트 경로를 전달합니다. 프로젝트는 자동 선택하지 않습니다. 소스 체크아웃은 `tools/Build-Launcher.ps1`로 시작 프로그램도 먼저 빌드해야 합니다.
 
 ```powershell
 .\Install-Unity.ps1 -ProjectPath 'C:\내프로젝트\UnityGame' -IncludeExamples

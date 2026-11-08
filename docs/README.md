@@ -20,7 +20,8 @@
 
 - [GitHub 배포 가이드](GITHUB-PUBLISH.md) — 소스 빌드, Windows 실행 ZIP, Release 업데이트.
 - [검증 결과](../VALIDATION.md) — 실제 실행과 모형 테스트를 구분한 기록.
-- [공개 배포본 첫 다운로드 검증](RELEASE-CHECK.md) — v0.4.0 실제 다운로드·새 Unity 설치·Play 확인 및 긴 경로 문제.
+- [v0.5.0 배포 검증](RELEASE-CHECK-0.5.md) — 짧은 경로 자동 준비·경고 수정·네이티브 시작 창.
+- [v0.4.0 첫 다운로드 검증](RELEASE-CHECK.md) — 이전 버전에서 발견한 문제와 당시 기록.
 - [MIT 라이선스](../LICENSE), [타사 고지](../THIRD-PARTY-NOTICES.md).
 
 ## 가장 자주 헷갈리는 점

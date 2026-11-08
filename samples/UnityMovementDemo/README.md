@@ -1,17 +1,20 @@
 # 한씨로 큐브 움직이기
 
-이 폴더가 Unity 프로젝트 루트입니다. Releases의 Windows 실행 ZIP에는 `Tools/HanCSharp` 변환기도 함께 들어 있습니다. GitHub **소스만** 받은 경우, Unity에서 열기 전에 저장소 루트에서 아래 명령으로 도구를 준비하세요(.NET 9 SDK 필요).
+Windows 배포본은 **START-HAN.cmd → ② Unity 이동 예제 준비·실행**을 사용합니다. 짧은 폴더에 압축된 템플릿과 변환기를 준비한 뒤 Unity 6000.3.25f1로 이동 씬을 엽니다. 배포 ZIP에는 이 폴더의 프로젝트 대신 `templates/UnityMovementDemo.zip`을 넣었습니다. 직접 압축을 풀어 쓰기보다 시작 창을 이용하세요.
+
+GitHub 소스 체크아웃에서는 이 폴더가 Unity 프로젝트 루트입니다. .NET 9 SDK로 도구를 먼저 준비합니다.
 
 ```powershell
 dotnet publish src/HanCSharp.Cli -c Release -o app --self-contained false
+.\tools\Build-Launcher.ps1
 .\Install-Unity.ps1 -ProjectPath '.\samples\UnityMovementDemo'
 ```
 
-한씨 파일을 바꾸지 않고 예제만 실행하더라도 첫 가져오기 오류를 피하기 위해 변환기를 먼저 준비하는 것을 권장합니다.
+소스 프로젝트 경로도 짧게 유지하세요. [처음 사용자 가이드](../../docs/QUICKSTART.md)를 참고하세요.
 
 ## 바로 실행
 
-실행 ZIP을 `C:\HanCSharp` 같은 짧은 경로에 풀고, 그 안의 **samples/UnityMovementDemo** 폴더를 Unity Hub의 **Add → Add project from disk**로 등록합니다. Unity 6000.3.25f1에서 작성했습니다. `Assets/HanCSharp/Scenes/MovementDemo.unity`를 열고 Play를 누른 다음 Game 화면을 클릭하세요. 깊게 중첩된 경로에서는 URP 패키지 가져오기 오류가 재현됐습니다.
+Play를 누른 다음 Game 화면을 클릭하세요. 씬이 열리지 않았다면 `Assets/HanCSharp/Scenes/MovementDemo.unity`를 여세요.
 
 - W / ↑: 앞쪽(+Z)
 - S / ↓: 뒤쪽(-Z)
