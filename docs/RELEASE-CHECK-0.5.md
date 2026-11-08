@@ -48,3 +48,5 @@ Unity와 Visual Studio는 별도 설치 대상이다. Unity 6000.3.25f1이 설�
 ## v0.5.1 첫 초기화 보강
 
 v0.5.0 공개 ZIP으로 만든 완전한 새 프로젝트에서 최초 이동 씬 열기 요청이 처리되지 않는 경우를 발견했다. 프로젝트의 절대 경로와 Editor 업데이트 알림을 사용하고 SceneAsset 등록이 끝날 때까지 기다리도록 수정했다. 실제 같은 프로젝트에서 수정 후 자동으로 이동 씬이 표시되고 Console 오류 0인 것을 확인했다.
+
+최신 배포는 [v0.5.1](https://github.com/Seo98/HanCSharp/releases/tag/v0.5.1)이다. 공개 ZIP을 다시 다운로드해 해시 일치·한글 출력·새 프로젝트 준비·반복 준비를 확인했다. SHA-256: `5555d2a7bef9ba1c248236b8bbb2c77156b4c996c72bfe53a3855d6ebce5bdf5`. [v0.5.1 GitHub Windows 빌드](https://github.com/Seo98/HanCSharp/actions/runs/42478579923)도 성공했다.
