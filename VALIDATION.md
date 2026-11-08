@@ -11,7 +11,7 @@
 - Windows x64 self-contained CLI publish 성공. .NET 런타임 포함, trimming 비활성화. DOTNET_ROOT를 존재하지 않는 경로로 지정한 실행에서 예제 출력과 종료 코드 0 확인. .NET이 제거된 새 PC에서의 검증은 아니다.
 - 공백을 포함한 새 프로젝트 폴더에 설치, coreclr.dll 및 생성 메뉴 복사, 설치된 EXE로 실제 한씨 변환 성공.
 - 시작 창 프로세스가 '한씨 시작하기' 창을 만든 것은 확인했지만, 컴퓨터 사용 도구가 PowerShell 소유 창을 목록에 노출하지 않아 GUI 버튼 클릭은 자동 검증하지 못했다. 예제 실행의 동일 CLI 경로는 -SmokeTest로 검증했다.
-- GitHub Actions와 GitHub Release 업로드는 로컬에서 수행하지 않았다. workflow는 수동 빌드 및 artifact 생성만 하며 자동 공개 업로드하지 않는다.
+- [GitHub Windows 빌드](https://github.com/Seo98/HanCSharp/actions/runs/42473219816)에서 언어 26개·완성 12개 검증과 VS 확장 빌드, 런타임 포함 배포 ZIP 생성, artifact 업로드가 성공했다. workflow는 수동 빌드 및 artifact 생성만 하며 자동 공개 업로드하지 않는다.
 
 ## 실제 컴파일·실행
 

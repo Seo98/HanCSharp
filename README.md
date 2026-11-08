@@ -116,7 +116,7 @@ C# → 한국어는 지원하는 클래스·멤버·실행문을 문장으로 �
 
 ## 독립 CLI
 
-배포된 app은 .NET 9 런타임이 필요합니다. Visual Studio 예제와 변환기 소스 빌드에는 .NET 9 SDK가 필요하며 global.json에 9.0.307을 기준으로 지정했습니다. 같은 .NET 9 계열의 최신 feature SDK를 허용합니다. 이 버전은 외부 NuGet 패키지를 다운로드하지 않습니다.
+Windows 실행 ZIP의 app에는 .NET 런타임이 포함됩니다. 소스에서 `--self-contained false`로 게시한 app에는 별도 .NET 9 런타임이 필요합니다. Visual Studio 예제와 변환기 소스 빌드에는 .NET 9 SDK가 필요하며 global.json에 9.0.307을 기준으로 지정했습니다. 같은 .NET 9 계열의 최신 feature SDK를 허용합니다. 기본 소스 빌드는 외부 NuGet 패키지를 요구하지 않지만 런타임 포함 배포 빌드는 공식 NuGet에서 런타임을 내려받습니다.
 
 ```powershell
 .\app\HanCSharp.Cli.exe run .\examples\game.han

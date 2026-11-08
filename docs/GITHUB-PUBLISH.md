@@ -29,6 +29,6 @@ Windows에서 .NET 9 SDK, Visual Studio 2022와 .NET Framework 4.7.2 개발용 �
 
 ## 자동화
 
-포함된 `.github/workflows/release.yml`은 **수동 Actions 실행** 시 Windows ZIP을 빌드해 Actions artifact로 제공합니다. 자동 공개 업로드는 하지 않습니다. artifact를 내려받아 테스트한 뒤 위 절차로 Release에 첨부하세요. GitHub Actions 실행과 GitHub 공개 업로드는 아직 이 로컬 환경에서 수행하지 않았습니다.
+포함된 `.github/workflows/release.yml`은 **수동 Actions 실행** 시 Windows ZIP을 빌드해 Actions artifact로 제공합니다. 자동 공개 업로드는 하지 않습니다. artifact를 내려받아 테스트한 뒤 위 절차로 Release에 첨부하세요. [첫 Windows 빌드](https://github.com/Seo98/HanCSharp/actions/runs/42473219816)에서 언어 검증·완성 검증·VS 확장 빌드·배포 ZIP 생성이 모두 성공했습니다.
 
 현재 도구는 언어 프로토타입입니다. README/VALIDATION에 실제 확인한 버전과 아직 지원하지 않는 문법·IDE 기능을 함께 유지하세요.
