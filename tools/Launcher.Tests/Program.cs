@@ -33,10 +33,14 @@ Directory.CreateDirectory(Path.Combine(install, "ProjectSettings"));
 Directory.CreateDirectory(Path.Combine(root, "unity/Editor"));
 Directory.CreateDirectory(Path.Combine(root, "samples/UnityScripts"));
 File.WriteAllText(Path.Combine(root, "unity/Editor/Bridge.cs"), "bridge");
+File.WriteAllText(Path.Combine(root, "unity/Editor/Preview.uxml"), "layout");
+File.WriteAllText(Path.Combine(root, "unity/Editor/Preview.uss"), "styles");
 File.WriteAllText(Path.Combine(root, "samples/UnityScripts/Test.han"), "sample");
 PackageOperations.InstallUnity(root, install, true);
 PackageOperations.InstallUnity(root, install, true);
 Assert(File.ReadAllText(Path.Combine(install, "Assets/HanCSharp/Examples/Test.han")) == "sample", "신규 설치와 동일 버전 재설치");
+Assert(File.ReadAllText(Path.Combine(install, "Assets/HanCSharp/Editor/Preview.uxml")) == "layout"
+    && File.ReadAllText(Path.Combine(install, "Assets/HanCSharp/Editor/Preview.uss")) == "styles", "미리보기 UI 리소스 설치");
 File.WriteAllText(Path.Combine(install, "Assets/HanCSharp/Editor/Bridge.cs"), "user code");
 Assert(Throws(() => PackageOperations.InstallUnity(root, install, true)) && File.ReadAllText(Path.Combine(install, "Assets/HanCSharp/Editor/Bridge.cs")) == "user code", "사용자 코드 덮어쓰기 거부");
 Assert(Throws(() => PackageOperations.InstallUnity(root, Path.Combine(install, "Assets"), true)), "Assets 자체를 프로젝트로 허용하지 않음");
@@ -45,7 +49,7 @@ Directory.CreateDirectory(Path.Combine(bad, "templates"));
 File.WriteAllText(Path.Combine(bad, "VERSION"), "0.5.0");
 using (var zip = ZipFile.Open(Path.Combine(bad, "templates/UnityMovementDemo.zip"), ZipArchiveMode.Create)) Write(zip, "../escaped.txt", "bad");
 Assert(Throws(() => PackageOperations.PrepareDemo(bad, Path.Combine(folder, "badout"))) && !File.Exists(Path.Combine(folder, "escaped.txt")), "압축 파일의 외부 경로 차단");
-Console.WriteLine("설치·데모 준비 검증: 9개 통과");
+Console.WriteLine("설치·데모 준비 검증: 10개 통과");
 
 static void Write(ZipArchive zip, string path, string content)
 {

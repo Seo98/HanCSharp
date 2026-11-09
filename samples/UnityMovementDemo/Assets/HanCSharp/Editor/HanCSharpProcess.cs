@@ -6,7 +6,7 @@ using System.Text;
 /// <summary>셸을 거치지 않고 외부 변환기를 실행한다. Unity 런타임에는 포함하지 않는다.</summary>
 public static class HanCSharpProcess
 {
-    public static bool Convert(string dotNetPath, string compilerPath, string input, string output, out string message, bool emitSourceMap = false)
+    public static bool Convert(string dotNetPath, string compilerPath, string input, string output, out string message, bool emitSourceMap = false, bool writeLineMap = false)
     {
         // Windows 배포본은 런타임이 포함된 EXE를 우선 사용한다. 다른 환경은 dotnet + DLL로 실행한다.
         string executable = Path.ChangeExtension(compilerPath, ".exe");
@@ -15,7 +15,7 @@ public static class HanCSharpProcess
         {
             FileName = useExecutable ? executable : dotNetPath,
             Arguments = (useExecutable ? "" : Quote(compilerPath) + " ") + "to-cs " + Quote(input) + " " + Quote(output)
-                + (emitSourceMap ? " --source-map" : "") + " --force",
+                + (emitSourceMap ? " --source-map" : "") + (writeLineMap ? " --write-line-map" : "") + " --force",
             UseShellExecute = false,
             CreateNoWindow = true,
             RedirectStandardOutput = true,

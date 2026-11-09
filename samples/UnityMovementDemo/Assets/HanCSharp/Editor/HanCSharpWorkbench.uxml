@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Style src="HanCSharpWorkbench.uss" />
+    <ui:VisualElement class="han-workbench">
+        <ui:Label name="sourcePath" class="han-path" text="Project 창에서 .han 또는 생성 C#을 선택하세요." />
+        <ui:VisualElement class="han-toolbar">
+            <ui:Button name="openSource" text="한씨 원본 열기" />
+            <ui:Button name="refresh" text="저장된 원본 새로고침" />
+            <ui:Button name="openError" text="오류 행 열기" />
+        </ui:VisualElement>
+        <ui:Label name="status" class="han-status" text="미리보기는 파일을 수정하지 않습니다. 외부 편집기에서 저장한 내용만 표시합니다." />
+        <ui:Label text="Unity C# 오류 — 컴파일 후 원본 행 열기 버튼이 표시됩니다." class="han-status" />
+        <ui:ScrollView class="han-diagnostics"><ui:VisualElement name="compilationErrors" /></ui:ScrollView>
+        <ui:VisualElement name="panes" class="han-panes" />
+    </ui:VisualElement>
+</ui:UXML>

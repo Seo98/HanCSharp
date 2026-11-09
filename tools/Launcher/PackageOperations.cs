@@ -97,6 +97,8 @@ namespace HanCSharp.Launcher
             var copies = new List<KeyValuePair<string, string>>();
             AddCopies(copies, Path.Combine(root, "app"), Path.Combine(targetRoot, "Tools", "HanCSharp"), "*");
             AddCopies(copies, Path.Combine(root, "unity", "Editor"), Path.Combine(targetRoot, "Assets", "HanCSharp", "Editor"), "*.cs");
+            AddCopies(copies, Path.Combine(root, "unity", "Editor"), Path.Combine(targetRoot, "Assets", "HanCSharp", "Editor"), "*.uxml");
+            AddCopies(copies, Path.Combine(root, "unity", "Editor"), Path.Combine(targetRoot, "Assets", "HanCSharp", "Editor"), "*.uss");
             if (includeExamples)
                 AddCopies(copies, Path.Combine(root, "samples", "UnityScripts"), Path.Combine(targetRoot, "Assets", "HanCSharp", "Examples"), "*.han");
             foreach (var copy in copies)

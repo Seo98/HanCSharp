@@ -36,6 +36,7 @@ Windows x64 실행 ZIP에는 .NET 런타임이 포함됩니다. Unity에 설치�
 - [Visual Studio 시작 안내](visualstudio/START-HERE.md)
 - [자동완성·색상 강조 확장 설치](visualstudio/EDITOR-SUPPORT.md)
 - [개발 가이드: 자료형·변수명·함수·Unity](docs/DEVELOPMENT-GUIDE.md)
+- [Unity 원본 열기·미리보기·오류 위치](docs/UNITY-EDITING.md)
 - [현재 파일용 외부 도구 등록](visualstudio/EXTERNAL-TOOLS.md)
 - [Unity 설치와 사용](unity/README.md)
 - [한씨로 큐브 움직이기](unity/MOVEMENT-DEMO.md)

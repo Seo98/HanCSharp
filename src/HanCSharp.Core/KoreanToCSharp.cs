@@ -14,7 +14,7 @@ public sealed class KoreanToCSharp
     private sealed record SourceLine(string Text, string Ending);
     private sealed record Block(string Kind, int Line);
 
-    public string Convert(string source, string? sourcePath = null)
+    public string Convert(string source, string? sourcePath = null, ICollection<int>? generatedLineSources = null)
     {
         var lines = SplitLines(source);
         var output = new StringBuilder();
@@ -27,8 +27,10 @@ public sealed class KoreanToCSharp
             {
                 output.Append("#line ").Append(currentLine).Append(' ')
                     .Append('"').Append(Path.GetFullPath(sourcePath)).Append('"').Append('\n');
+                generatedLineSources?.Add(0);
             }
             Append(output, depth, text);
+            generatedLineSources?.Add(currentLine);
         }
 
         for (int index = 0; index < lines.Count; index++)
@@ -51,6 +53,7 @@ public sealed class KoreanToCSharp
                 {
                     output.Append("#line ").Append(number + 1).Append(' ')
                         .Append('"').Append(Path.GetFullPath(sourcePath)).Append('"').Append('\n');
+                    generatedLineSources?.Add(0);
                 }
                 while (++index < lines.Count)
                 {
@@ -60,6 +63,7 @@ public sealed class KoreanToCSharp
                         break;
                     }
                     output.Append(lines[index].Text).Append(lines[index].Ending);
+                    generatedLineSources?.Add(index + 1);
                 }
                 if (!closed)
                 {

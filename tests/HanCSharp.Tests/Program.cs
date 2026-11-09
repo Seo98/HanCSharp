@@ -354,6 +354,17 @@ await Test("생성된 클래스도 한국어로 분해", () =>
     return Task.CompletedTask;
 });
 
+await Test("별도 행 매핑과 raw 문자열의 #line 보존", () =>
+{
+    string source = "// head\n```csharp\nstring text = \"\"\"\n#line 77 \"inside\"\n\"\"\";\n```\n출력 text.";
+    var map = new List<int>();
+    string generated = new KoreanToCSharp().Convert(source, generatedLineSources: map);
+    Equal(new KoreanToCSharp().Convert(source), generated);
+    if (!map.SequenceEqual(new[] { 1, 3, 4, 5, 7 }) || !generated.Contains("#line 77 \"inside\""))
+        throw new Exception("원문 블록의 행 번호 또는 문자열이 변경됐습니다.");
+    return Task.CompletedTask;
+});
+
 Console.WriteLine($"검증 결과: {passed} 통과 / {failed} 실패");
 return failed == 0 ? 0 : 1;
 

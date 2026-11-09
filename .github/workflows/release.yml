@@ -17,6 +17,12 @@ jobs:
       - name: Validate completion catalog
         shell: pwsh
         run: dotnet run --project editor-support/EditorSupport.Tests
+      - name: Validate Unity bridge and preview without Editor
+        shell: pwsh
+        run: |
+          dotnet publish src/HanCSharp.Cli -c Release -o app --self-contained false
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          dotnet run --project tests/UnityBridge.Tests -- C:\han-bridge-ci
       - name: Build Visual Studio extension
         shell: pwsh
         run: ./editor-support/Build-Extension.ps1

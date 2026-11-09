@@ -35,15 +35,25 @@ public static class HanCSharpGenerator
         try
         {
             bool success = HanCSharpProcess.Convert(settings.DotNetPath, settings.CompilerPath,
-                Path.GetFullPath(sourcePath), temporary, out string message, settings.EmitSourceMap);
+                Path.GetFullPath(sourcePath), temporary, out string message, settings.EmitSourceMap, !settings.EmitSourceMap);
             string content = Header + sourcePath + "\n";
-            if (success) content += File.ReadAllText(temporary);
+            int[] sourceLines = new int[0];
+            if (success)
+            {
+                content += File.ReadAllText(temporary);
+                if (!settings.EmitSourceMap)
+                    sourceLines = HanCSharpSourceMap.ReadLineMap(temporary + ".hanmap");
+            }
             else
             {
                 // 실패한 소스 대신 이전 코드를 실행하는 일을 막는다. 소스를 고치면 다시 생성된다.
-                content += "#error HanCSharp 변환 실패. 원본 .han 및 Console 오류를 확인하세요.\n";
+                int line = HanCSharpSourceMap.DiagnosticLine(message);
+                content += "#line " + line + " \"" + Path.GetFullPath(sourcePath) + "\"\n"
+                    + "#error HanCSharp 변환 실패. 원본 .han 및 Console 오류를 확인하세요.\n";
                 Debug.LogError(message);
             }
+            if (success && !settings.EmitSourceMap)
+                HanCSharpSourceMap.Save(target, sourcePath, content, sourceLines);
             if (!File.Exists(target) || File.ReadAllText(target) != content)
             {
                 File.WriteAllText(target, content, new UTF8Encoding(false));
@@ -60,6 +70,7 @@ public static class HanCSharpGenerator
         finally
         {
             if (File.Exists(temporary)) File.Delete(temporary);
+            if (File.Exists(temporary + ".hanmap")) File.Delete(temporary + ".hanmap");
         }
     }
 

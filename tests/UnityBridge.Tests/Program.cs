@@ -69,7 +69,35 @@ try
     try { HanCSharpCreateMenu.CreateAtPath("Assets/Scripts With Spaces/Existing.han"); }
     catch (IOException) { refused = true; }
     Require(refused && File.ReadAllText("Assets/Scripts With Spaces/Existing.cs") == "// user", "동일 이름 사용자 C# 보호");
-    Console.WriteLine("Unity 연결 모형 검증: 20개 확인 통과. 실제 Unity 실행 증거는 아닙니다.");
+    string mapHan = "Assets/Scripts With Spaces/MapSample.han";
+    string mapCs = Path.ChangeExtension(mapHan, ".cs");
+    string mapSource = "공개 클래스 MapSample:\n```csharp\npublic const string Text = \"\"\"\n#line 77 \"inside\"\n\"\"\";\n```\n공개 함수 Run()은 없음:\n정수 값은 \"오류\"이다.\n끝.\n끝.";
+    File.WriteAllText(mapHan, mapSource);
+    HanCSharpGenerator.Generate(mapHan, settings);
+    string generated = File.ReadAllText(mapCs);
+    int generatedLine = Array.FindIndex(generated.Split('\n'), line => line.Contains("int 값")) + 1;
+    Require(HanCSharpSourceMap.TryResolve(mapCs, generatedLine, mapHan, out int originalLine) && originalLine == 8,
+        "간결한 생성 C#의 의미 오류 행을 한씨 8행으로 연결");
+    Require(generated.Contains("#line 77 \"inside\""), "원문 문자열의 #line 보존");
+    HanCSharpPreview preview = HanCSharpPreview.Convert(mapHan, "dotnet", compiler);
+    Require(preview.Success && preview.SourceText == mapSource && File.ReadAllText(mapCs) == generated,
+        "미리보기는 원본과 생성 C#을 수정하지 않음");
+    File.AppendAllText(mapCs, "// user edit");
+    Require(!HanCSharpSourceMap.TryResolve(mapCs, generatedLine, mapHan, out _), "수정된 생성 파일의 오래된 매핑 거부");
+    string badHan = "Assets/Scripts With Spaces/BadSyntax.han";
+    File.WriteAllText(badHan, "공개 클래스 BadSyntax:\n공개 함수 Run()은 없음:\n// comment\n잘못된 문장\n끝.\n끝.");
+    preview = HanCSharpPreview.Convert(badHan, "dotnet", compiler);
+    Require(!preview.Success && preview.ErrorLine == 4 && !File.Exists(Path.ChangeExtension(badHan, ".cs")),
+        "문법 오류 미리보기의 4행 진단과 파일 미생성");
+    HanCSharpGenerator.Generate(badHan, settings);
+    Require(File.ReadAllText(Path.ChangeExtension(badHan, ".cs")).Contains("#line 4 \""), "실패한 변환의 컴파일 오류도 원본 행에 연결");
+    EditorSettings.projectGenerationUserExtensions = new[] { "txt" };
+    HanCSharpProjectIntegration.OpenSourceAtLine(mapHan, 8);
+    Require(UnityEditorInternal.InternalEditorUtility.LastFile == Path.GetFullPath(mapHan)
+        && UnityEditorInternal.InternalEditorUtility.LastLine == 8
+        && EditorSettings.projectGenerationUserExtensions.SequenceEqual(new[] { "txt", "han" }),
+        "원본 행 열기 시 확장자 등록과 절대 경로 전달");
+    Console.WriteLine("Unity 연결 모형 검증: 27개 확인 통과. 실제 Unity 실행 증거는 아닙니다.");
     return 0;
 }
 finally

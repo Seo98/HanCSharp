@@ -100,13 +100,34 @@ namespace UnityEditor.ProjectWindowCallback
 
 namespace UnityEditor.Callbacks
 {
-    public class OnOpenAssetAttribute : System.Attribute { }
+    public class OnOpenAssetAttribute : System.Attribute
+    {
+        public OnOpenAssetAttribute(int order = 0) { }
+    }
 }
 
 namespace UnityEditorInternal
 {
     public static class InternalEditorUtility
     {
-        public static void OpenFileAtLineExternal(string file, int line) { }
+        public static string LastFile;
+        public static int LastLine;
+        public static void OpenFileAtLineExternal(string file, int line)
+        {
+            LastFile = file;
+            LastLine = line;
+        }
+    }
+}
+
+namespace Unity.CodeEditor
+{
+    public sealed class StubCodeEditor
+    {
+        public bool OpenProject(string path, int line, int column) => false;
+    }
+    public static class CodeEditor
+    {
+        public static readonly StubCodeEditor CurrentEditor = new();
     }
 }
