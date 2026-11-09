@@ -1,3 +1,7 @@
+# v0.7.0 검증
+
+최신 결과는 [v0.7 검증](docs/RELEASE-CHECK-0.7.md), 문법은 [새 문법 안내](docs/GRAMMAR-0.7.md)를 보세요. 아래는 과거 배포 기록입니다.
+
 # v0.6.0 검증
 
 최신 검증은 [v0.6 기록](docs/RELEASE-CHECK-0.6.md), 사용법은 [Unity 편집 가이드](docs/UNITY-EDITING.md)를 보세요. 아래는 이전 배포의 기록입니다.

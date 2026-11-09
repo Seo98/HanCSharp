@@ -3,12 +3,12 @@
 공개 봉인 클래스 HanSpinner는 MonoBehaviour를 상속한다:
     // Inspector에서 회전 속도와 축을 수정합니다.
     특성 SerializeField.
-    비공개 필드 단정도실수 _degreesPerSecond는 90f이다.
+    비공개 필드 실수32 _degreesPerSecond는 90f이다.
 
     특성 SerializeField.
     비공개 필드 벡터3 _rotationAxis는 Vector3.up이다.
 
-    비공개 함수 Update()는 없음:
+    비공개 함수 Update():
         실행 transform.Rotate(_rotationAxis, _degreesPerSecond * Time.deltaTime, Space.Self).
     끝.
 끝.

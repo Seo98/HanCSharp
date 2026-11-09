@@ -9,6 +9,7 @@ public static class LanguageDefinition
     {
         ["정수"] = "int", ["긴정수"] = "long", ["실수"] = "double",
         ["단정도실수"] = "float", ["십진수"] = "decimal", ["문자열"] = "string",
+        ["실수32"] = "float", ["실수64"] = "double",
         ["문자"] = "char", ["논리"] = "bool", ["객체"] = "object",
         ["자동"] = "var", ["없음"] = "void",
         ["벡터2"] = "global::UnityEngine.Vector2", ["벡터3"] = "global::UnityEngine.Vector3",

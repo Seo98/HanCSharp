@@ -16,10 +16,20 @@ public sealed class KoreanToCSharp
 
     public string Convert(string source, string? sourcePath = null, ICollection<int>? generatedLineSources = null)
     {
+        // 선언을 먼저 파악해 이전 코드의 '참/거짓' 이름을 논리 상수로 바꾸지 않는다.
+        var names = BooleanLiterals.DeclaredNames(ConvertCore(source, null, null, null));
+        return ConvertCore(source, sourcePath, generatedLineSources, names);
+    }
+
+    private static string ConvertCore(string source, string? sourcePath, ICollection<int>? generatedLineSources, ISet<string>? booleanNames)
+    {
         var lines = SplitLines(source);
         var output = new StringBuilder();
         var blocks = new Stack<Block>();
         int currentLine = 1;
+        int repeatIndex = 0;
+        string Expression(string text, int line) => SyntaxRules.Expression(text, line, booleanNames);
+        string Condition(string text, int line) => ParseCondition(text, line, booleanNames);
 
         void Emit(int depth, string text)
         {
@@ -72,12 +82,24 @@ public sealed class KoreanToCSharp
                 continue;
             }
 
-            if (line == "끝.")
+            string? closingKind = line switch
+            {
+                "조건 끝." => "condition", "반복 끝." => "loop", "함수 끝." => "function",
+                "클래스 끝." => "class", "이름공간 끝." => "namespace", _ => null
+            };
+            if (line == "끝." || closingKind != null)
             {
                 if (blocks.Count == 0)
                 {
                     throw new LanguageException(number, "닫을 블록이 없습니다.");
                 }
+                string actualKind = blocks.Peek().Kind switch
+                {
+                    "if" or "else" => "condition", "while" or "repeat" => "loop",
+                    "method" or "function" => "function", var kind => kind
+                };
+                if (closingKind != null && closingKind != actualKind)
+                    throw new LanguageException(number, $"'{line}'으로 {blocks.Peek().Line}행의 블록을 닫을 수 없습니다. 블록 종류를 확인하세요.");
                 blocks.Pop();
                 Emit(blocks.Count, "}");
                 continue;
@@ -97,7 +119,7 @@ public sealed class KoreanToCSharp
 
             if (line.StartsWith("만약 ", StringComparison.Ordinal) && line.EndsWith(':'))
             {
-                string condition = ParseCondition(line[3..^1], number);
+                string condition = Condition(line[3..^1], number);
                 Emit(blocks.Count, $"if ({condition}) {{");
                 blocks.Push(new Block("if", number));
                 continue;
@@ -105,13 +127,33 @@ public sealed class KoreanToCSharp
 
             if (line.StartsWith("동안 ", StringComparison.Ordinal) && line.EndsWith(':'))
             {
-                string condition = ParseCondition(line[3..^1], number);
+                string condition = Condition(line[3..^1], number);
                 Emit(blocks.Count, $"while ({condition}) {{");
                 blocks.Push(new Block("while", number));
                 continue;
             }
 
-            if (DeclarationSyntax.TryParse(line, number, out string declaration, out string? declarationBlock))
+            if (line.EndsWith(" 동안:", StringComparison.Ordinal))
+            {
+                string condition = ParseNaturalWhile(line[..^4], number, booleanNames);
+                Emit(blocks.Count, $"while ({condition}) {{");
+                blocks.Push(new Block("while", number));
+                continue;
+            }
+
+            Match simpleRepeat = Match(line, @"^(?<count>[0-9]+)번 반복:$");
+            if (simpleRepeat.Success)
+            {
+                if (!int.TryParse(simpleRepeat.Groups["count"].Value, out int count))
+                    throw new LanguageException(number, "반복 횟수는 0부터 2147483647까지의 정수로 작성하세요.");
+                string name;
+                do { name = "__hanRepeat" + repeatIndex++; } while (source.Contains(name, StringComparison.Ordinal));
+                Emit(blocks.Count, $"for (int {name} = 0; {name} < {count}; {name}++) {{");
+                blocks.Push(new Block("repeat", number));
+                continue;
+            }
+
+            if (DeclarationSyntax.TryParse(line, number, out string declaration, out string? declarationBlock, booleanNames))
             {
                 Emit(blocks.Count, declaration);
                 if (declarationBlock is not null) blocks.Push(new Block(declarationBlock, number));
@@ -144,12 +186,12 @@ public sealed class KoreanToCSharp
                 continue;
             }
 
-            Match function = Match(line, @"^함수 (?<name>\S+)\((?<args>.*)\)(?:은|는) (?<type>\S+):$");
+            Match function = Match(line, @"^함수 (?<name>\S+)\((?<args>.*)\)(?:(?:은|는) (?<type>\S+))?:$");
             if (function.Success)
             {
                 string name = Identifier(function.Groups["name"].Value, number);
                 string parameters = ParseParameters(function.Groups["args"].Value, number);
-                string type = Type(function.Groups["type"].Value, number, allowVoid: true);
+                string type = function.Groups["type"].Success ? Type(function.Groups["type"].Value, number, allowVoid: true) : "void";
                 Emit(blocks.Count, $"{type} {name}({parameters}) {{");
                 blocks.Push(new Block("function", number));
                 continue;
@@ -225,8 +267,9 @@ public sealed class KoreanToCSharp
         return output.ToString();
     }
 
-    private static string ParseCondition(string text, int line)
+    private static string ParseCondition(string text, int line, ISet<string>? booleanNames)
     {
+        string Expression(string value, int number) => SyntaxRules.Expression(value, number, booleanNames);
         Match comparison = Match(text, @"^(?<left>.+?)(?:이|가) (?<right>.+)보다 (?<op>크면|작으면|크거나 같으면|작거나 같으면)$");
         if (!comparison.Success)
         {
@@ -248,6 +291,19 @@ public sealed class KoreanToCSharp
             return Expression(text[..^2], line);
         }
         throw new LanguageException(line, "조건은 'a가 0보다 크면' 또는 'C#조건식이면' 형식으로 작성하세요.");
+    }
+
+    private static string ParseNaturalWhile(string text, int line, ISet<string>? booleanNames)
+    {
+        foreach (var pair in new[] { ("크거나 같은", "크거나 같으면"), ("작거나 같은", "작거나 같으면"),
+            ("큰", "크면"), ("작은", "작으면"), ("같은", "같으면"), ("다른", "다르면") })
+        {
+            if (text.EndsWith(" " + pair.Item1, StringComparison.Ordinal))
+                return ParseCondition(text[..^pair.Item1.Length] + pair.Item2, line, booleanNames);
+        }
+        if (text.EndsWith("인", StringComparison.Ordinal))
+            return SyntaxRules.Expression(text[..^1], line, booleanNames);
+        throw new LanguageException(line, "반복 조건은 '체력이 0보다 큰 동안:' 또는 '조건식인 동안:'처럼 작성하세요.");
     }
 
     private static string ParseParameters(string text, int line) => SyntaxRules.Parameters(text, line);

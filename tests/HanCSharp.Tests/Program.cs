@@ -365,6 +365,66 @@ await Test("별도 행 매핑과 raw 문자열의 #line 보존", () =>
     return Task.CompletedTask;
 });
 
+await Test("반환형 없는 지역 함수와 멤버 함수", async () =>
+{
+    await ExpectProgram("함수 인사():\n출력 \"인사\".\n함수 끝.\n실행 인사().", "인사\n");
+    await ExpectProgram("공개 클래스 Program:\n공개 정적 함수 Main():\n출력 7.\n함수 끝.\n클래스 끝.", "7\n");
+});
+await Test("자연스러운 동안 비교와 조건식", async () =>
+{
+    await ExpectProgram("정수 값은 3이다.\n값이 0보다 큰 동안:\n출력 값.\n값에서 1을 뺀다.\n반복 끝.\n논리 활성은 참이다.\n활성인 동안:\n활성에 거짓을 넣는다.\n반복 끝.\n출력 활성.", "3\n2\n1\nFalse\n");
+    foreach (string condition in new[] { "값이 0보다 작은", "값이 0보다 작거나 같은", "값이 1보다 크거나 같은", "값이 1과 같은", "값이 0과 다른", "값 > 1인" })
+        await ExpectProgram("정수 값은 0이다.\n" + condition + " 동안:\n중단.\n반복 끝.\n출력 값.", "0\n");
+});
+await Test("간단 반복 중첩과 생성 이름 충돌 회피", async () =>
+{
+    await ExpectProgram("정수 __hanRepeat0는 9이다.\n정수 합은 0이다.\n0번 반복:\n합에 100을 더한다.\n반복 끝.\n2번 반복:\n3번 반복:\n합에 1을 더한다.\n반복 끝.\n반복 끝.\n출력 합.\n출력 __hanRepeat0.", "6\n9\n");
+});
+await Test("한국어 논리값과 문자열·멤버·보간 보호", async () =>
+{
+    await ExpectProgram("논리 활성은 참 && !거짓이다.\n출력 활성.\n출력 \"참 거짓\".\n출력 $\"{참}:{거짓}\".", "True\n참 거짓\nTrue:False\n");
+    await ExpectProgram("```csharp\nvar 값 = new { 참 = 7, 거짓 = 8 };\n```\n출력 값.참.\n출력 값.거짓.\n출력 true.", "7\n8\nTrue\n");
+});
+await Test("기존 참·거짓 선언 이름과 이스케이프 보존", async () =>
+{
+    await ExpectProgram("정수 참은 7이다.\n정수 거짓은 8이다.\n출력 참 + 거짓.\n출력 nameof(참).", "15\n참\n");
+    await ExpectProgram("정수 @참은 5이다.\n출력 @참.\n출력 false.", "5\nFalse\n");
+    await ExpectProgram("가져오기 System.Linq.\n출력 (from 참 in new[] { 1, 2 } select 참).Sum().", "3\n");
+    string conditional = new KoreanToCSharp().Convert("```csharp\n#if CUSTOM_SYMBOL\nint 참 = 7;\n#endif\n```\n출력 참.");
+    if (!conditional.Contains("WriteLine(참)")) throw new Exception(conditional);
+    Equal("7\n", await Capture(conditional.Replace("#if CUSTOM_SYMBOL", "#if true"), []));
+});
+await Test("실수32·실수64 별칭과 이전 실수 의미 유지", async () =>
+{
+    await ExpectProgram("실수32 값은 1.5f이다.\n실수64 큰값은 2.0이다.\n실수 이전값은 3.0이다.\n출력 값.GetType().Name.\n출력 큰값.GetType().Name.\n출력 이전값.GetType().Name.", "Single\nDouble\nDouble\n");
+    CheckLibrary(new KoreanToCSharp().Convert("공개 클래스 Storage:\n공개 필드 실수32[] Values.\n공개 필드 System.Collections.Generic.List<실수64> Doubles.\n클래스 끝."));
+});
+await Test("블록 종류 확인과 오류 원본 행", () =>
+{
+    ExpectError("만약 참이면:\n함수 끝.", 2);
+    ExpectError("공개 클래스 A:\n조건 끝.", 2);
+    ExpectError("반복 끝.", 1);
+    ExpectError("2147483648번 반복:\n끝.", 1);
+    ExpectError("-1번 반복:\n끝.", 1);
+    ExpectError("체력 동안:\n끝.", 1);
+    return Task.CompletedTask;
+});
+await Test("새 문법도 별도 원본 행 매핑 유지", () =>
+{
+    var map = new List<int>();
+    string generated = new KoreanToCSharp().Convert("3번 반복:\n출력 참.\n반복 끝.", generatedLineSources: map);
+    if (!map.SequenceEqual(new[] { 1, 2, 3 }) || !generated.Contains("WriteLine(true)")) throw new Exception(generated);
+    return Task.CompletedTask;
+});
+await Test("역변환의 권장 함수·반복 표현과 재실행", async () =>
+{
+    string source = "공개 클래스 Program:\n공개 정적 함수 Main():\n정수 값은 2이다.\n값이 0보다 큰 동안:\n출력 값.\n값에서 1을 뺀다.\n반복 끝.\n함수 끝.\n클래스 끝.";
+    string generated = new KoreanToCSharp().Convert(source);
+    string restored = new CSharpToKorean().Convert(generated);
+    if (!restored.Contains("Main():") || !restored.Contains("큰 동안:") || !restored.Contains("함수 끝.")) throw new Exception(restored);
+    Equal("2\n1\n", await Capture(new KoreanToCSharp().Convert(restored), []));
+});
+
 Console.WriteLine($"검증 결과: {passed} 통과 / {failed} 실패");
 return failed == 0 ? 0 : 1;
 

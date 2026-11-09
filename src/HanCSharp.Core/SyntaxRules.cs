@@ -56,14 +56,15 @@ internal static class SyntaxRules
         return text;
     }
 
-    public static string Expression(string text, int line)
+    public static string Expression(string text, int line, ISet<string>? declaredBooleanNames = null)
     {
         text = text.Trim();
         if (text.Length == 0 || SyntaxFactory.ParseExpression(text).ContainsDiagnostics)
         {
             throw new LanguageException(line, $"올바르지 않은 식입니다: {text}");
         }
-        return text;
+        return declaredBooleanNames is null ? text : new BooleanLiterals(declaredBooleanNames)
+            .Visit(SyntaxFactory.ParseExpression(text))!.ToFullString();
     }
 
     private sealed class TypeAliasRewriter : CSharpSyntaxRewriter

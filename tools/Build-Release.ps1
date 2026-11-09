@@ -14,7 +14,7 @@ $licenses = Join-Path $portable 'licenses'
 New-Item -ItemType Directory -Path $licenses -Force | Out-Null
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/dotnet/runtime/v$runtime/LICENSE.TXT" -OutFile (Join-Path $licenses 'DOTNET-LICENSE.txt')
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/dotnet/runtime/v$runtime/THIRD-PARTY-NOTICES.TXT" -OutFile (Join-Path $licenses 'DOTNET-THIRD-PARTY-NOTICES.txt')
-if (-not (Test-Path -LiteralPath (Join-Path $root 'visualstudio\HanCSharp-0.3.vsix'))) { throw 'Build-Extension.ps1로 VSIX를 먼저 만드세요.' }
+if (-not (Test-Path -LiteralPath (Join-Path $root 'visualstudio\HanCSharp-0.7.vsix'))) { throw 'Build-Extension.ps1로 VSIX를 먼저 만드세요.' }
 $artifacts = Join-Path $root 'artifacts'
 $stage = Join-Path $artifacts ('stage-' + [Guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $stage -Force | Out-Null
@@ -23,6 +23,7 @@ $excluded = @('bin','obj','.vs','.git','app','app-portable','artifacts','validat
 foreach ($file in Get-ChildItem -LiteralPath $root -Recurse -File -Force) {
     $relative = $file.FullName.Substring($root.Length).TrimStart('\','/')
     if (@($relative.Split([char[]]'\/') | Where-Object { $_ -in $excluded }).Count -gt 0) { continue }
+    if ($relative.EndsWith('.vsix', [StringComparison]::OrdinalIgnoreCase) -and $relative -ne 'visualstudio\HanCSharp-0.7.vsix') { continue }
     if ($relative.StartsWith('samples\UnityMovementDemo\', [StringComparison]::OrdinalIgnoreCase) -and
         $relative -notin @('samples\UnityMovementDemo\README.md','samples\UnityMovementDemo\VALIDATION.md')) { continue }
     $target = Join-Path $stage $relative

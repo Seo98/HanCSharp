@@ -8,7 +8,7 @@
     공개 속성 정수 Current는 _current이다.
     공개 이벤트 Action<int>? Changed.
 
-    공개 함수 TakeDamage(정수 amount)는 없음:
+    공개 함수 TakeDamage(정수 amount):
         만약 amount가 0보다 작으면:
             실행 throw new ArgumentOutOfRangeException(nameof(amount)).
         끝.

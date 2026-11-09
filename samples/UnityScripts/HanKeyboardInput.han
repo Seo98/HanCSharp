@@ -5,7 +5,7 @@
     비공개 필드 벡터2 _moveValue는 Vector2.zero이다.
     공개 속성 벡터2 MoveValue는 _moveValue이다.
 
-    비공개 함수 Update()는 없음:
+    비공개 함수 Update():
         _moveValue에 Vector2.zero를 넣는다.
         만약 Application.isFocused == false이면:
             반환.
@@ -13,7 +13,7 @@
         _moveValue에 Vector2.ClampMagnitude(ReadKeyboard(), 1f)를 넣는다.
     끝.
 
-    비공개 함수 OnDisable()는 없음:
+    비공개 함수 OnDisable():
         _moveValue에 Vector2.zero를 넣는다.
     끝.
 

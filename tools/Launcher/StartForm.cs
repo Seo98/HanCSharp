@@ -28,7 +28,7 @@ namespace HanCSharp.Launcher
             AddButton("① 한씨 콘솔 예제 실행", () => RunAction(() => Program.RunCompiler(_root)));
             AddButton("② Unity 이동 예제 준비·실행", () => OpenDemo(false));
             AddButton("③ 기존 Unity 프로젝트에 설치", InstallUnity);
-            AddButton("Visual Studio 확장 설치", () => OpenFile(Path.Combine(_root, "visualstudio", "HanCSharp-0.3.vsix")));
+            AddButton("Visual Studio 확장 설치", () => OpenFile(Path.Combine(_root, "visualstudio", "HanCSharp-0.7.vsix")));
             AddButton("처음 사용자 가이드", ShowGuide);
             AddButton("예제 저장 위치 선택", () => OpenDemo(true));
             _output.Multiline = true;

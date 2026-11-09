@@ -18,6 +18,11 @@
 - [Unity 설치와 생성 파일 관리](../unity/README.md)
 - [현재 파일 변환용 외부 도구](../visualstudio/EXTERNAL-TOOLS.md)
 
+## 문법
+
+- [v0.7 새 문법·이전 문법 호환](GRAMMAR-0.7.md)
+- [새 문법 실행 예제](../samples/LanguageTour/Main.han)
+
 ## 개발·배포
 
 - [GitHub 배포 가이드](GITHUB-PUBLISH.md) — 소스 빌드, Windows 실행 ZIP, Release 업데이트.

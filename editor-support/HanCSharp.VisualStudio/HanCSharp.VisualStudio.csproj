@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <AssemblyName>HanCSharp.VisualStudio</AssemblyName>
-    <Version>0.3.0</Version>
+    <Version>0.7.0</Version>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
     <VisualStudioInstallPath Condition="'$(VisualStudioInstallPath)' == ''">$(ProgramFiles)\Microsoft Visual Studio\2022\Community</VisualStudioInstallPath>

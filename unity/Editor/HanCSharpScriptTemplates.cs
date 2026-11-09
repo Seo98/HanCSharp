@@ -22,11 +22,11 @@ public static class HanCSharpScriptTemplates
         return "가져오기 UnityEngine.\n\n"
             + "// 이 파일을 저장하고 Unity로 돌아오면 같은 이름의 C#이 생성됩니다.\n"
             + "공개 봉인 클래스 " + name + "는 MonoBehaviour를 상속한다:\n"
-            + "    비공개 함수 Start()는 없음:\n"
+            + "    비공개 함수 Start():\n"
             + "        기록 \"한씨 컴포넌트가 시작되었습니다!\".\n"
-            + "    끝.\n\n"
-            + "    비공개 함수 Update()는 없음:\n"
+            + "    함수 끝.\n\n"
+            + "    비공개 함수 Update():\n"
             + "        // 매 프레임 실행할 한씨 코드를 작성하세요.\n"
-            + "    끝.\n끝.\n";
+            + "    함수 끝.\n클래스 끝.\n";
     }
 }

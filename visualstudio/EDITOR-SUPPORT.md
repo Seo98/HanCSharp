@@ -1,10 +1,10 @@
-# 한씨 Visual Studio 확장 0.3
+# 한씨 Visual Studio 확장 0.7
 
 ## 설치
 
 Visual Studio 문서를 저장하고 모든 Visual Studio 창을 닫습니다. 다음 방법 중 하나를 사용합니다.
 
-**일반 VSIX 설치:** 이 폴더의 `HanCSharp-0.3.vsix`를 열고 대상 Visual Studio를 선택합니다.
+**일반 VSIX 설치:** 이 폴더의 `HanCSharp-0.7.vsix`를 열고 대상 Visual Studio를 선택합니다.
 
 **사용자 폴더 배포:** VSIX 설치 관리자가 실행되지 않는 환경에서는 루트 폴더에서 다음 명령을 사용합니다.
 

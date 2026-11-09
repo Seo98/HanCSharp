@@ -2,7 +2,7 @@
 
 공개 봉인 클래스 HanCoroutineSample는 MonoBehaviour를 상속한다:
     특성 SerializeField.
-    비공개 필드 단정도실수 _interval는 1f이다.
+    비공개 필드 실수32 _interval는 1f이다.
 
     비공개 함수 Start()는 코루틴:
         반복 차례는 3회:

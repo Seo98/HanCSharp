@@ -16,7 +16,7 @@ internal static class DeclarationSyntax
 
     public static string ToKoreanModifier(string text) => _modifiers.FirstOrDefault(p => p.Value == text).Key ?? text;
 
-    public static bool TryParse(string line, int number, out string code, out string? block)
+    public static bool TryParse(string line, int number, out string code, out string? block, ISet<string>? declaredBooleanNames = null)
     {
         code = "";
         block = null;
@@ -80,22 +80,23 @@ internal static class DeclarationSyntax
                 block = "class";
                 return true;
             case "함수":
-                match = Match(body, @"^(?<name>\S+)\((?<args>.*)\)(?:은|는) (?<type>\S+):$");
+                match = Match(body, @"^(?<name>\S+)\((?<args>.*)\)(?:(?:은|는) (?<type>\S+))?:$");
                 if (!match.Success) break;
-                code = $"{modifiers}{SyntaxRules.Type(match.Groups["type"].Value, number, true)} {SyntaxRules.Identifier(match.Groups["name"].Value, number)}({SyntaxRules.Parameters(match.Groups["args"].Value, number)}) {{";
+                string returnType = match.Groups["type"].Success ? SyntaxRules.Type(match.Groups["type"].Value, number, true) : "void";
+                code = $"{modifiers}{returnType} {SyntaxRules.Identifier(match.Groups["name"].Value, number)}({SyntaxRules.Parameters(match.Groups["args"].Value, number)}) {{";
                 block = "method";
                 return true;
             case "필드":
             case "이벤트":
                 match = Match(body, @"^(?<type>\S+) (?<name>\S+?)(?:(?:은|는) (?<value>.+)이다)?\.$");
                 if (!match.Success) break;
-                string initializer = match.Groups["value"].Success ? " = " + SyntaxRules.Expression(match.Groups["value"].Value, number) : "";
+                string initializer = match.Groups["value"].Success ? " = " + SyntaxRules.Expression(match.Groups["value"].Value, number, declaredBooleanNames) : "";
                 code = $"{modifiers}{(kind == "이벤트" ? "event " : "")}{SyntaxRules.Type(match.Groups["type"].Value, number)} {SyntaxRules.Identifier(match.Groups["name"].Value, number)}{initializer};";
                 return true;
             case "속성":
                 match = Match(body, @"^(?<type>\S+) (?<name>\S+?)(?:은|는) (?<value>.+)이다\.$");
                 if (!match.Success) break;
-                code = $"{modifiers}{SyntaxRules.Type(match.Groups["type"].Value, number)} {SyntaxRules.Identifier(match.Groups["name"].Value, number)} => {SyntaxRules.Expression(match.Groups["value"].Value, number)};";
+                code = $"{modifiers}{SyntaxRules.Type(match.Groups["type"].Value, number)} {SyntaxRules.Identifier(match.Groups["name"].Value, number)} => {SyntaxRules.Expression(match.Groups["value"].Value, number, declaredBooleanNames)};";
                 return true;
         }
         throw new LanguageException(number, $"{kind} 선언의 형식을 확인하세요. 문법 안내의 선언 예제를 참고하세요.");

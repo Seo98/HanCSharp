@@ -13,11 +13,13 @@ namespace HanCSharp.EditorSupport
             "만약", "아니면", "동안", "반복", "끝", "반환", "중단", "계속", "실행", "출력", "기록", "기다린다", "양보종료",
             "상속한다", "넣는다", "더한다", "뺀다", "곱한다", "크면", "작으면", "같으면", "다르면", "이면", "이다",
             "true", "false", "null", "new", "this", "base", "await", "nameof", "typeof", "default",
+            "참", "거짓", "조건", "큰", "작은", "같은", "다른",
             "public", "private", "protected", "internal", "static", "class", "namespace", "using", "return", "if", "else", "while", "for", "foreach", "in", "yield", "break", "continue", "throw", "try", "catch", "finally"
         };
         private static readonly HashSet<string> _types = new HashSet<string>(StringComparer.Ordinal)
         {
             "정수", "긴정수", "실수", "단정도실수", "십진수", "문자열", "문자", "논리", "객체", "자동", "없음",
+            "실수32", "실수64",
             "벡터2", "벡터3", "회전", "색상", "코루틴", "int", "long", "float", "double", "decimal", "string", "char", "bool", "object", "var", "void",
             "MonoBehaviour", "ScriptableObject", "Transform", "GameObject", "Vector2", "Vector3", "Quaternion", "Color", "IEnumerator", "Action", "List", "Dictionary"
         };
@@ -82,6 +84,14 @@ namespace HanCSharp.EditorSupport
                     while (index < text.Length && IsWord(text[index]))
                         index++;
                     string word = text.Substring(start, index - start);
+                    string literal = word.StartsWith("거짓", StringComparison.Ordinal) ? "거짓" : "참";
+                    string ending = word.StartsWith(literal, StringComparison.Ordinal) ? word.Substring(literal.Length) : "";
+                    if (ending == "이다" || ending == "을" || ending == "를" || ending == "인")
+                    {
+                        tokens.Add(new HanToken(start, literal.Length, HanTokenKind.Keyword));
+                        tokens.Add(new HanToken(start + literal.Length, ending.Length, HanTokenKind.Keyword));
+                        continue;
+                    }
                     HanTokenKind kind = _types.Contains(word) ? HanTokenKind.Type : _keywords.Contains(word) ? HanTokenKind.Keyword : HanTokenKind.Identifier;
                     tokens.Add(new HanToken(start, index - start, kind));
                     continue;

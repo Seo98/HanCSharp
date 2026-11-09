@@ -16,8 +16,8 @@ $instances = @($instances | Where-Object {
 if ($instances.Count -eq 0) { throw '대상 Visual Studio 설치를 찾지 못했습니다.' }
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
-$packagePath = Join-Path $projectRoot 'visualstudio\HanCSharp-0.3.vsix'
-if (-not (Test-Path -LiteralPath $packagePath)) { throw 'HanCSharp-0.3.vsix가 없습니다. Build-Extension.ps1로 먼저 빌드하세요.' }
+$packagePath = Join-Path $projectRoot 'visualstudio\HanCSharp-0.7.vsix'
+if (-not (Test-Path -LiteralPath $packagePath)) { throw 'HanCSharp-0.7.vsix가 없습니다. Build-Extension.ps1로 먼저 빌드하세요.' }
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $zip = [System.IO.Compression.ZipFile]::OpenRead($packagePath)
 try {

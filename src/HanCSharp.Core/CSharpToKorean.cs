@@ -114,9 +114,10 @@ public sealed class CSharpToKorean
                 string parameters = WriteParameters(method.ParameterList);
                 // 수식어 없는 멤버 함수는 C#의 기본 private를 명시한다.
                 if (methodModifiers.Length == 0) methodModifiers = "비공개 ";
-                Line(output, depth, $"{methodModifiers}함수 {method.Identifier.Text}({parameters}){KoreanParticle.Select(method.Identifier.Text, "은", "는")} {LanguageDefinition.ToKoreanType(method.ReturnType.ToString())}:");
+                string returns = method.ReturnType.ToString() == "void" ? "" : KoreanParticle.Select(method.Identifier.Text, "은", "는") + " " + LanguageDefinition.ToKoreanType(method.ReturnType.ToString());
+                Line(output, depth, $"{methodModifiers}함수 {method.Identifier.Text}({parameters}){returns}:");
                 WriteBody(output, method.Body, depth + 1);
-                Line(output, depth, "끝.");
+                Line(output, depth, "함수 끝.");
                 return;
             case PropertyDeclarationSyntax property when property.ExpressionBody is not null
                 && property.AttributeLists.All(IsSingleLine)
@@ -181,7 +182,7 @@ public sealed class CSharpToKorean
             case ForStatementSyntax repeat when RepeatHeader(repeat) is string header:
                 Line(output, depth, header);
                 WriteBody(output, (BlockSyntax)repeat.Statement, depth + 1);
-                Line(output, depth, "끝.");
+                Line(output, depth, "반복 끝.");
                 return;
             case IfStatementSyntax conditional when conditional.Statement is BlockSyntax body
                 && (conditional.Else is null || conditional.Else.Statement is BlockSyntax)
@@ -193,20 +194,21 @@ public sealed class CSharpToKorean
                     Line(output, depth, "아니면:");
                     WriteBody(output, alternative, depth + 1);
                 }
-                Line(output, depth, "끝.");
+                Line(output, depth, "조건 끝.");
                 return;
             case WhileStatementSyntax loop when loop.Statement is BlockSyntax body && IsSingleLine(loop.Condition):
-                Line(output, depth, $"동안 {Condition(loop.Condition)}:");
+                Line(output, depth, $"{WhileCondition(loop.Condition)} 동안:");
                 WriteBody(output, body, depth + 1);
-                Line(output, depth, "끝.");
+                Line(output, depth, "반복 끝.");
                 return;
             case LocalFunctionStatementSyntax function when CanWriteFunction(function):
                 string parameters = string.Join(", ", function.ParameterList.Parameters.Select(p =>
                     $"{LanguageDefinition.ToKoreanType(p.Type!.ToString())} {p.Identifier.Text}"));
                 string topic = KoreanParticle.Select(function.Identifier.Text, "은", "는");
-                Line(output, depth, $"함수 {function.Identifier.Text}({parameters}){topic} {LanguageDefinition.ToKoreanType(function.ReturnType.ToString())}:");
+                string functionReturns = function.ReturnType.ToString() == "void" ? "" : topic + " " + LanguageDefinition.ToKoreanType(function.ReturnType.ToString());
+                Line(output, depth, $"함수 {function.Identifier.Text}({parameters}){functionReturns}:");
                 WriteBody(output, function.Body!, depth + 1);
-                Line(output, depth, "끝.");
+                Line(output, depth, "함수 끝.");
                 return;
             default:
                 Raw(output, statement.ToFullString(), depth);
@@ -310,7 +312,22 @@ public sealed class CSharpToKorean
         ExpressionSyntax count = comparison.Right is ParenthesizedExpressionSyntax parenthesized
             ? parenthesized.Expression : comparison.Right;
         string topic = KoreanParticle.Select(name, "은", "는");
+        if (name.StartsWith("__hanRepeat", StringComparison.Ordinal) && int.TryParse(count.ToString(), out int times) && times >= 0
+            && !loop.Statement.DescendantTokens().Any(token => token.ValueText == name))
+            return $"{times}번 반복:";
         return $"반복 {name}{topic} {count}회:";
+    }
+
+    private static string WhileCondition(ExpressionSyntax expression)
+    {
+        string condition = Condition(expression);
+        foreach (var pair in new[] { ("크거나 같으면", "크거나 같은"), ("작거나 같으면", "작거나 같은"),
+            ("크면", "큰"), ("작으면", "작은"), ("같으면", "같은"), ("다르면", "다른"), ("이면", "인") })
+        {
+            if (condition.EndsWith(pair.Item1, StringComparison.Ordinal))
+                return condition[..^pair.Item1.Length] + pair.Item2;
+        }
+        return condition + "인";
     }
 
     private static string Condition(ExpressionSyntax expression)

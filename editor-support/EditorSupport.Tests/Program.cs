@@ -94,6 +94,21 @@ Test("컴파일러 자료형 별칭과 완성 목록의 일치", () =>
         Assert(CompletionCatalog.Entries.Any(e => e.Display == type));
     }
 });
+Test("v0.7 별칭·논리값·블록 종료 완성", () =>
+{
+    foreach (string name in new[] { "실수32", "실수64", "참", "거짓", "조건 끝.", "함수 끝.", "간단 반복", "동안 반복" })
+        Assert(CompletionCatalog.Entries.Any(entry => entry.Display == name), name);
+    string code = "실수32 속도는 4f이다.\n논리 활성은 참이다.\n조건 끝.";
+    var tokens = HanLexer.Tokenize(code);
+    Assert(tokens.Any(t => t.Kind == HanTokenKind.Type && code.Substring(t.Start, t.Length) == "실수32"));
+    Assert(tokens.Any(t => t.Kind == HanTokenKind.Keyword && code.Substring(t.Start, t.Length) == "참"));
+    Assert(tokens.Any(t => t.Kind == HanTokenKind.Keyword && code.Substring(t.Start, t.Length) == "조건"));
+});
+Test("반환형 생략 함수의 매개변수 이름 완성", () =>
+{
+    string code = "공개 함수 회복(정수 회복량):\n출력 회복량.\n함수 끝.\n";
+    Assert(CompletionCatalog.Suggest(code, code.Length).Any(entry => entry.Display == "회복량"));
+});
 Console.WriteLine($"편집 지원 검증: {passed} 통과 / {failed} 실패");
 return failed == 0 ? 0 : 1;
 
