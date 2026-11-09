@@ -27,6 +27,7 @@
 
 - [GitHub 배포 가이드](GITHUB-PUBLISH.md) — 소스 빌드, Windows 실행 ZIP, Release 업데이트.
 - [검증 결과](../VALIDATION.md) — 실제 실행과 모형 테스트를 구분한 기록.
+- [v0.7 검증](RELEASE-CHECK-0.7.md) — 새 문법·이전 문법 회귀·Unity Play·공개 ZIP 왕복 실행.
 - [v0.6 검증](RELEASE-CHECK-0.6.md) — 원본 버튼·비교 화면·문법 및 실제 C# 오류 행 이동.
 - [v0.5.0 배포 검증](RELEASE-CHECK-0.5.md) — 짧은 경로 자동 준비·경고 수정·네이티브 시작 창.
 - [v0.4.0 첫 다운로드 검증](RELEASE-CHECK.md) — 이전 버전에서 발견한 문제와 당시 기록.
