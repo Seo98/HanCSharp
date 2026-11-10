@@ -1,5 +1,13 @@
 # 한씨 가이드 목차
 
+[영어와 한국어의 차이, 한씨가 문장형 문법을 택한 이유](LANGUAGE-PHILOSOPHY.md)
+
+**[주어·목적어·동사 순서로 배우는 초급 문법](BEGINNER-GUIDE.md)** — v0.9 작업본. 값 만들기부터 Unity 부품까지.
+
+**[대표 코드 예제 9개](CODE-EXAMPLES.md)** — Hello World, 점수, 조건, 되풀이, 데미지, 회복, Unity 인사·이동·피해 처리.
+
+[v0.9 작업본 검증 기록](VALIDATION-0.9-PREVIEW.md) — 자동 검증 110개, 실제 Unity 이동·Inspector 속도 변경.
+
 한씨는 `.han` 한국어 문장을 일반 C#으로 변환합니다. Unity 런타임에 별도 언어 해석기를 넣지 않습니다.
 
 **[v0.8 Unity 패키지 전체 설치 가이드](UNITYPACKAGE-INSTALL.md)**

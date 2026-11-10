@@ -2,19 +2,25 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+**v0.9 소스:** [초급 한국어 문장 문법](docs/BEGINNER-GUIDE.md)을 구현했습니다. `체력은 100이다.`, `컴퓨터는 "안녕!"을 출력한다.`, `이 물체는 오른쪽으로 초당 이동속도만큼 움직인다.`처럼 이름과 목적어를 먼저 적습니다. 아래 공개 패키지 다운로드는 v0.8입니다. 새 문법은 이 저장소의 소스를 빌드하거나 별도로 제공한 v0.9 작업 패키지를 사용하세요.
+
 **[Unity 패키지 다운로드](https://github.com/Seo98/HanCSharp/releases/latest/download/HanCSharp.unitypackage)** · **[Markdown 가이드 목차](docs/README.md)** · **[Unity 이동 예제](samples/UnityMovementDemo/README.md)**
 
 한국어 문장을 C#으로 변환하고, C# 코드도 다시 한국어 문장으로 표현하는 개인 언어 프로토타입입니다. **Visual Studio 솔루션·빌드 연결·Unity 연결 코드·한씨 편집기 확장**을 포함합니다.
 
 ```text
-공개 클래스 Program:
-    공개 정적 함수 Main():
-        정수 체력은 100이다.
-        체력에서 25를 뺀다.
-        출력 $"남은 체력: {체력}".
-    끝.
-끝.
+체력은 100이다.
+체력에서 25를 뺀다.
+컴퓨터는 $"남은 체력: {체력}"을 출력한다.
 ```
+
+## 한국어 문장으로 코드를 쓰는 이유
+
+영어 단어를 한글로 바꾸는 것만으로는 코드가 한국어답게 읽히지 않는다고 느꼈습니다. 한국어의 **주어·목적어·동사** 순서를 반영해, 처음 배우는 사람도 무엇이 무엇을 하는지 문장을 따라 이해할 수 있게 만들고 있습니다.
+
+`컴퓨터는 "안녕"을 출력한다.`, `이 물체는 오른쪽으로 초당 이동속도만큼 움직인다.`가 그 방향입니다. 정해진 문장 틀을 사용하며 C#·Unity와의 연결도 유지합니다.
+
+**[영어와 한국어의 차이에 대한 짧은 고찰](docs/LANGUAGE-PHILOSOPHY.md)** · **[대표 코드 예제 9개](docs/CODE-EXAMPLES.md)** · **[초급 문법 가이드](docs/BEGINNER-GUIDE.md)**
 
 ## 시작
 

@@ -80,7 +80,7 @@ Test("모든 문장 템플릿의 실제 한씨 변환/구문 검증", () =>
         string generated = new KoreanToCSharp().Convert(code);
         if (new[] { "멤버 함수", "직렬화 필드", "유니티 Update", "유니티 코루틴" }.Contains(entry.Display))
             generated = "class Example { " + generated + " }";
-        else if (!new[] { "클래스 틀", "콘솔 프로그램", "유니티 컴포넌트" }.Contains(entry.Display))
+        else if (!new[] { "클래스 틀", "콘솔 프로그램", "유니티 컴포넌트", "쉬운 유니티 부품" }.Contains(entry.Display))
             generated = "class Example { void Test() { " + generated + " } }";
         try { new CSharpToKorean().Convert(generated); }
         catch (Exception error) { throw new Exception(entry.Display + ": " + error.Message); }
@@ -108,6 +108,15 @@ Test("반환형 생략 함수의 매개변수 이름 완성", () =>
 {
     string code = "공개 함수 회복(정수 회복량):\n출력 회복량.\n함수 끝.\n";
     Assert(CompletionCatalog.Suggest(code, code.Length).Any(entry => entry.Display == "회복량"));
+});
+Test("초급 문장 완성과 선언 이름 수집", () =>
+{
+    string source = "조절할 이동속도는 4이다.\n체력은 정수이며 처음에는 100이다.\n인사하기는 이렇게 한다:\n동작 끝.\nHanEasyMover는 유니티 부품이다:\n부품 끝.\n";
+    var names = CompletionCatalog.Suggest(source, source.Length).Select(e => e.Display).ToArray();
+    foreach (string name in new[] { "이동속도", "체력", "인사하기", "HanEasyMover", "쉬운 값 만들기", "쉬운 유니티 부품" }) Assert(names.Contains(name), name);
+    var tokens = HanLexer.Tokenize("컴퓨터는 \"끝.\"을 출력한다.");
+    Assert(tokens.Count(t=>t.Kind==HanTokenKind.String)==1);
+    Assert(tokens.Count(t=>t.Kind==HanTokenKind.Keyword)==2);
 });
 Console.WriteLine($"편집 지원 검증: {passed} 통과 / {failed} 실패");
 return failed == 0 ? 0 : 1;

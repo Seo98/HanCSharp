@@ -19,14 +19,13 @@ public static class HanCSharpScriptTemplates
     {
         if (!IsValidName(name))
             throw new ArgumentException("공백 없이 영문·한글·숫자·밑줄을 사용하고 숫자로 시작하지 마세요.", nameof(name));
-        return "가져오기 UnityEngine.\n\n"
-            + "// 이 파일을 저장하고 Unity로 돌아오면 같은 이름의 C#이 생성됩니다.\n"
-            + "공개 봉인 클래스 " + name + "는 MonoBehaviour를 상속한다:\n"
-            + "    비공개 함수 Start():\n"
-            + "        기록 \"한씨 컴포넌트가 시작되었습니다!\".\n"
-            + "    함수 끝.\n\n"
-            + "    비공개 함수 Update():\n"
-            + "        // 매 프레임 실행할 한씨 코드를 작성하세요.\n"
-            + "    함수 끝.\n클래스 끝.\n";
+        return "// 이 파일을 저장하고 Unity로 돌아오면 같은 이름의 C#이 생성됩니다.\n"
+            + name + "는 유니티 부품이다:\n"
+            + "    처음 시작할 때:\n"
+            + "        이 물체는 \"한씨 부품이 시작되었습니다!\"를 기록한다.\n"
+            + "    동작 끝.\n\n"
+            + "    매 순간:\n"
+            + "        // 여기에 이 물체가 할 일을 적어 주세요.\n"
+            + "    동작 끝.\n부품 끝.\n";
     }
 }

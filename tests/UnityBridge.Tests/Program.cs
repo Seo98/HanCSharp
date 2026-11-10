@@ -57,7 +57,7 @@ try
     Require(EditorSettings.projectGenerationUserExtensions.SequenceEqual(new[] { "txt", "han" }), "프로젝트 확장자 추가와 기존 설정 유지");
     string created = "Assets/Scripts With Spaces/이동Component.han";
     HanCSharpCreateMenu.CreateAtPath(created);
-    Require(File.ReadAllText(created).Contains("클래스 이동Component는 MonoBehaviour"), "새 한씨 파일명과 클래스명 일치");
+    Require(File.ReadAllText(created).Contains("이동Component는 유니티 부품이다:"), "새 한씨 파일명과 부품명 일치");
     bool refused = false;
     try { HanCSharpCreateMenu.CreateAtPath(created); }
     catch (IOException) { refused = true; }

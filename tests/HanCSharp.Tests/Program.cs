@@ -425,6 +425,124 @@ await Test("역변환의 권장 함수·반복 표현과 재실행", async () =>
     Equal("2\n1\n", await Capture(new KoreanToCSharp().Convert(restored), []));
 });
 
+await Test("초급 주어 먼저 값 선언과 목적어 먼저 출력", async () =>
+{
+    await ExpectProgram("""
+        이름은 "민수"이다.
+        체력은 정수이며 처음에는 100이다.
+        준비는 참이다.
+        컴퓨터는 이름을 출력한다.
+        체력에서 10을 뺀다.
+        컴퓨터는 체력을 출력한다.
+        컴퓨터는 준비를 출력한다.
+        "문자열 안의 끝. 체력은 0이다."를 출력한다.
+        """, "민수\n90\nTrue\n문자열 안의 끝. 체력은 0이다.\n");
+});
+await Test("초급 조건과 아니라면 및 이상 이하", async () =>
+{
+    await ExpectProgram("""
+        체력은 10이다.
+        체력이 0보다 크다면:
+            컴퓨터는 "살아 있음"을 출력한다.
+        아니라면:
+            컴퓨터는 "실패"를 출력한다.
+        조건 끝.
+        체력이 10 이상이라면:
+            컴퓨터는 "이상"을 출력한다.
+        조건 끝.
+        체력이 10 이하라면:
+            컴퓨터는 "이하"를 출력한다.
+        조건 끝.
+        체력이 10이라면:
+            컴퓨터는 "같음"을 출력한다.
+        조건 끝.
+        준비는 참이다.
+        준비가 참이라면:
+            컴퓨터는 "준비"를 출력한다.
+        조건 끝.
+        """, "살아 있음\n이상\n이하\n같음\n준비\n");
+});
+await Test("초급 동작 호출 되풀이 중단과 다음 차례", async () =>
+{
+    await ExpectProgram("""
+        인사하기는 이렇게 한다:
+            컴퓨터는 "안녕"을 출력한다.
+        동작 끝.
+        인사하기를 실행한다.
+        차례는 0이다.
+        5번 되풀이한다:
+            차례에 1을 더한다.
+            차례가 2라면:
+                다음 차례로 넘어간다.
+            조건 끝.
+            차례가 4라면:
+                되풀이를 멈춘다.
+            조건 끝.
+            컴퓨터는 차례를 출력한다.
+        되풀이 끝.
+        """, "안녕\n1\n3\n");
+});
+await Test("초급 논리값과 같은 이름 및 C# 원문 보존", async () =>
+{
+    await ExpectProgram("""
+        참은 7이다.
+        값은 참이다.
+        컴퓨터는 값을 출력한다.
+        ```csharp
+        System.Console.WriteLine("이 물체는 오른쪽으로 초당 9만큼 움직인다.");
+        ```
+        """, "7\n이 물체는 오른쪽으로 초당 9만큼 움직인다.\n");
+});
+await Test("초급 유니티 부품 Inspector 값과 세계 방향 이동", () =>
+{
+    string source = """
+        HanEasyMover는 유니티 부품이다:
+            조절할 이동속도는 4이다.
+            조절할 배율은 1.5이다.
+            처음 시작할 때:
+                이 물체는 "출발!"을 기록한다.
+            동작 끝.
+            매 순간:
+                이 물체는 오른쪽으로 초당 이동속도 * 배율만큼 움직인다.
+            동작 끝.
+        부품 끝.
+        """;
+    string stub = """
+        namespace UnityEngine {
+            public class MonoBehaviour { public Transform transform = new Transform(); }
+            public class SerializeField : System.Attribute { }
+            public class Transform { public Vector3 position; }
+            public struct Vector3 {
+                public static Vector3 right => new Vector3();
+                public static Vector3 operator *(Vector3 v, float f) => v;
+                public static Vector3 operator +(Vector3 a, Vector3 b) => a;
+            }
+            public static class Time { public static float deltaTime => 0.02f; }
+            public static class Debug { public static void Log(object value) { } }
+        }
+        """;
+    string generated = new KoreanToCSharp().Convert(source);
+    CheckLibrary(generated + stub);
+    CheckLibrary(new KoreanToCSharp().Convert(new CSharpToKorean().Convert(generated)) + stub);
+    if (!generated.Contains("private double 배율 = 1.5;") || !generated.Contains("Time.deltaTime")) throw new Exception(generated);
+    return Task.CompletedTask;
+});
+await Test("초급 문장의 오류 행과 배치 제약", () =>
+{
+    ExpectError("처음 시작할 때:\n끝.", 1);
+    ExpectError("조절할 체력은 100이다.", 1);
+    ExpectError("이 물체는 오른쪽으로 초당 4만큼 움직인다.", 1);
+    ExpectError("한부품은 유니티 부품이다:\n이 물체는 오른쪽으로 초당 4만큼 움직인다.\n끝.", 2);
+    ExpectError("한부품은 유니티 부품이다:\n값은 3 + 4이다.\n끝.", 2);
+    ExpectError("대상은 null이다.", 1);
+    ExpectError("값은 1이다.\n3번 되풀이한다:\n부품 끝.", 3);
+    ExpectError("한부품은 유니티 부품이다:\n매 순간:\n이 물체는 오른쪽으로 초당 +만큼 움직인다.\n끝.\n끝.", 3);
+    var map = new List<int>();
+    new KoreanToCSharp().Convert("체력은 1이다.\n컴퓨터는 체력을 출력한다.", generatedLineSources: map);
+    if (!map.SequenceEqual(new[] { 1, 2 })) throw new Exception("초급 문장 원본 행 불일치");
+    return Task.CompletedTask;
+});
+
 Console.WriteLine($"검증 결과: {passed} 통과 / {failed} 실패");
 return failed == 0 ? 0 : 1;
 

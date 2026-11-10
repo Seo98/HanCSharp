@@ -9,7 +9,9 @@ $project = Join-Path $PSScriptRoot 'HanCSharp.VisualStudio\HanCSharp.VisualStudi
 & dotnet build $project -c Release -m:1 --nologo "-p:VisualStudioInstallPath=$VisualStudioPath"
 if ($LASTEXITCODE -ne 0) { throw 'Visual Studio 확장 빌드 실패' }
 
-$destination = Join-Path $PSScriptRoot '..\visualstudio\HanCSharp-0.7.vsix'
+$version = ([IO.File]::ReadAllText((Join-Path $PSScriptRoot '..\VERSION'))).Trim()
+$shortVersion = ([Version]$version).ToString(2)
+$destination = Join-Path $PSScriptRoot ("..\visualstudio\HanCSharp-" + $shortVersion + '.vsix')
 $destination = [System.IO.Path]::GetFullPath($destination)
 $files = @{
     'extension.vsixmanifest' = (Join-Path $PSScriptRoot 'HanCSharp.VisualStudio\extension.vsixmanifest')

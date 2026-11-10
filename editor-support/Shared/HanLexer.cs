@@ -14,6 +14,9 @@ namespace HanCSharp.EditorSupport
             "상속한다", "넣는다", "더한다", "뺀다", "곱한다", "크면", "작으면", "같으면", "다르면", "이면", "이다",
             "true", "false", "null", "new", "this", "base", "await", "nameof", "typeof", "default",
             "참", "거짓", "조건", "큰", "작은", "같은", "다른",
+            "컴퓨터는", "출력한다", "기록한다", "조절할", "처음에는", "유니티", "부품이다", "이렇게", "한다",
+            "처음", "시작할", "때", "매", "순간", "이", "물체는", "오른쪽으로", "왼쪽으로", "위쪽으로", "아래쪽으로", "앞쪽으로", "뒤쪽으로",
+            "초당", "움직인다", "되풀이한다", "되풀이", "부품", "동작", "아니라면", "실행한다", "돌려준다", "여기서", "마친다", "멈춘다", "다음", "차례로", "넘어간다",
             "public", "private", "protected", "internal", "static", "class", "namespace", "using", "return", "if", "else", "while", "for", "foreach", "in", "yield", "break", "continue", "throw", "try", "catch", "finally"
         };
         private static readonly HashSet<string> _types = new HashSet<string>(StringComparer.Ordinal)
@@ -86,7 +89,7 @@ namespace HanCSharp.EditorSupport
                     string word = text.Substring(start, index - start);
                     string literal = word.StartsWith("거짓", StringComparison.Ordinal) ? "거짓" : "참";
                     string ending = word.StartsWith(literal, StringComparison.Ordinal) ? word.Substring(literal.Length) : "";
-                    if (ending == "이다" || ending == "을" || ending == "를" || ending == "인")
+                    if (ending == "이다" || ending == "을" || ending == "를" || ending == "인" || ending == "이라면")
                     {
                         tokens.Add(new HanToken(start, literal.Length, HanTokenKind.Keyword));
                         tokens.Add(new HanToken(start + literal.Length, ending.Length, HanTokenKind.Keyword));

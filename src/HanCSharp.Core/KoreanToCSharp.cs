@@ -85,7 +85,8 @@ public sealed class KoreanToCSharp
             string? closingKind = line switch
             {
                 "조건 끝." => "condition", "반복 끝." => "loop", "함수 끝." => "function",
-                "클래스 끝." => "class", "이름공간 끝." => "namespace", _ => null
+                "클래스 끝." or "부품 끝." => "class", "동작 끝." => "function",
+                "되풀이 끝." => "loop", "이름공간 끝." => "namespace", _ => null
             };
             if (line == "끝." || closingKind != null)
             {
@@ -96,7 +97,7 @@ public sealed class KoreanToCSharp
                 string actualKind = blocks.Peek().Kind switch
                 {
                     "if" or "else" => "condition", "while" or "repeat" => "loop",
-                    "method" or "function" => "function", var kind => kind
+                    "method" or "function" => "function", "unity" => "class", var kind => kind
                 };
                 if (closingKind != null && closingKind != actualKind)
                     throw new LanguageException(number, $"'{line}'으로 {blocks.Peek().Line}행의 블록을 닫을 수 없습니다. 블록 종류를 확인하세요.");
@@ -105,7 +106,7 @@ public sealed class KoreanToCSharp
                 continue;
             }
 
-            if (line == "아니면:")
+            if (line is "아니면:" or "아니라면:")
             {
                 if (blocks.Count == 0 || blocks.Peek().Kind != "if")
                 {
@@ -121,6 +122,13 @@ public sealed class KoreanToCSharp
             {
                 string condition = Condition(line[3..^1], number);
                 Emit(blocks.Count, $"if ({condition}) {{");
+                blocks.Push(new Block("if", number));
+                continue;
+            }
+
+            if (line.EndsWith("다면:", StringComparison.Ordinal) || line.EndsWith("라면:", StringComparison.Ordinal))
+            {
+                Emit(blocks.Count, $"if ({Condition(line[..^1], number)}) {{");
                 blocks.Push(new Block("if", number));
                 continue;
             }
@@ -141,7 +149,7 @@ public sealed class KoreanToCSharp
                 continue;
             }
 
-            Match simpleRepeat = Match(line, @"^(?<count>[0-9]+)번 반복:$");
+            Match simpleRepeat = Match(line, @"^(?<count>[0-9]+)번 (?:반복|되풀이한다):$");
             if (simpleRepeat.Success)
             {
                 if (!int.TryParse(simpleRepeat.Groups["count"].Value, out int count))
@@ -150,6 +158,14 @@ public sealed class KoreanToCSharp
                 do { name = "__hanRepeat" + repeatIndex++; } while (source.Contains(name, StringComparison.Ordinal));
                 Emit(blocks.Count, $"for (int {name} = 0; {name} < {count}; {name}++) {{");
                 blocks.Push(new Block("repeat", number));
+                continue;
+            }
+
+            if (NaturalSentenceSyntax.TryParse(line, number, blocks.TryPeek(out var parent) ? parent.Kind : null,
+                blocks.Any(block => block.Kind == "unity"), booleanNames, out string natural, out string? naturalBlock))
+            {
+                Emit(blocks.Count, natural);
+                if (naturalBlock != null) blocks.Push(new Block(naturalBlock, number));
                 continue;
             }
 
@@ -270,6 +286,21 @@ public sealed class KoreanToCSharp
     private static string ParseCondition(string text, int line, ISet<string>? booleanNames)
     {
         string Expression(string value, int number) => SyntaxRules.Expression(value, number, booleanNames);
+        Match natural = Match(text, @"^(?<left>.+?)(?:이|가) (?<right>.+?)(?<op>이상이라면|이하라면|이라면|라면)$");
+        if (natural.Success)
+        {
+            string operation = natural.Groups["op"].Value switch { "이상이라면" => ">=", "이하라면" => "<=", _ => "==" };
+            return $"({Expression(natural.Groups["left"].Value, line)}) {operation} ({Expression(natural.Groups["right"].Value.Trim(), line)})";
+        }
+        foreach (var pair in new[] { ("크거나 같다면", "크거나 같으면"), ("작거나 같다면", "작거나 같으면"),
+            ("크다면", "크면"), ("작다면", "작으면"), ("같다면", "같으면"), ("다르다면", "다르면") })
+        {
+            if (text.EndsWith(pair.Item1, StringComparison.Ordinal))
+            {
+                text = text[..^pair.Item1.Length] + pair.Item2;
+                break;
+            }
+        }
         Match comparison = Match(text, @"^(?<left>.+?)(?:이|가) (?<right>.+)보다 (?<op>크면|작으면|크거나 같으면|작거나 같으면)$");
         if (!comparison.Success)
         {

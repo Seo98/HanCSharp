@@ -1,10 +1,12 @@
-# 한씨 Visual Studio 확장 0.7
+# 한씨 Visual Studio 확장
+
+v0.9 작업본은 **HanCSharp-0.9.vsix**를 사용합니다. 초급 문장 완성 6종과 새 문장으로 선언한 이름을 지원합니다. [초급 문법 안내](../docs/BEGINNER-GUIDE.md). 공개 v0.8 릴리스에 첨부된 확장은 0.7입니다.
 
 ## 설치
 
 Visual Studio 문서를 저장하고 모든 Visual Studio 창을 닫습니다. 다음 방법 중 하나를 사용합니다.
 
-**일반 VSIX 설치:** 이 폴더의 `HanCSharp-0.7.vsix`를 열고 대상 Visual Studio를 선택합니다.
+**일반 VSIX 설치:** 받은 버전에 맞는 `HanCSharp-0.9.vsix`(새 문법 작업본) 또는 `HanCSharp-0.7.vsix`(v0.8 공개본)를 열고 대상 Visual Studio를 선택합니다.
 
 **사용자 폴더 배포:** VSIX 설치 관리자가 실행되지 않는 환경에서는 루트 폴더에서 다음 명령을 사용합니다.
 

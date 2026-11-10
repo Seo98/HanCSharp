@@ -2,6 +2,8 @@
 
 v0.8부터 실행 EXE 대신 **HanCSharp.unitypackage**로 배포합니다. Unity에 설치 창과 DLL 변환기를 가져오는 방식입니다. 필수 프로그램을 자동 설치하거나 운영체제 설정을 변경하지 않습니다.
 
+**v0.9 초급 문법 작업본을 받은 경우:** 제공받은 v0.9 패키지와 HanCSharp-0.9.vsix를 사용하세요. 공개 v0.8 다운로드에는 새 문법이 없습니다. [주어·목적어·동사 순서 입문 가이드](BEGINNER-GUIDE.md)
+
 ## 먼저 직접 설치할 것
 
 | 항목 | 설치 방법 |
@@ -9,7 +11,7 @@ v0.8부터 실행 EXE 대신 **HanCSharp.unitypackage**로 배포합니다. Unit
 | Unity Editor | Unity Hub에서 Unity 6000.3 LTS를 설치합니다. 확인한 버전은 6000.3.25f1입니다. |
 | .NET Runtime | [공식 .NET 10 다운로드](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)의 **Run apps → .NET Runtime**에서 운영체제·아키텍처에 맞게 설치합니다. Windows Unity x64는 x64를 선택합니다. SDK나 ASP.NET 전용 프로그램을 따로 요구하지 않습니다. SDK에 런타임이 이미 있으면 별도 설치는 필요 없습니다. |
 | 코드 편집기(선택) | Visual Studio의 Unity 개발 환경을 설치하고 Unity Preferences → External Tools → External Script Editor에서 선택합니다. |
-| 자동완성 확장(선택) | Release의 **HanCSharp-0.7.vsix**를 받습니다. Visual Studio 문서를 저장하고 닫은 뒤 설치합니다. v0.8의 문법은 v0.7과 같습니다. |
+| 자동완성 확장(선택) | v0.9 작업본은 **HanCSharp-0.9.vsix**, 공개 v0.8은 **HanCSharp-0.7.vsix**를 사용합니다. Visual Studio 문서를 저장하고 닫은 뒤 직접 설치합니다. |
 
 런타임 설치 뒤 Unity를 완전히 닫고 다시 여세요. `dotnet`이 PATH에서 실행 가능해야 합니다. 변환기는 net9.0 DLL이며 런타임 설정의 Major roll-forward로 .NET 10에서도 실행됩니다. 새 설치는 .NET 10 Runtime을 권장합니다. 소스 자체를 빌드할 개발자만 저장소 global.json에 맞는 .NET SDK가 필요합니다. [런타임 선택 정책](https://learn.microsoft.com/en-us/dotnet/core/versions/selection)
 

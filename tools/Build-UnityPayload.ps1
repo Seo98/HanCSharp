@@ -39,7 +39,7 @@ foreach($file in Get-ChildItem (Join-Path $root 'unity\Editor') -File | Where-Ob
 foreach($file in Get-ChildItem (Join-Path $root 'samples\UnityScripts') -Filter '*.han' -File) {
     Add-Asset $file.FullName ('Assets/HanCSharp/Examples/'+$file.Name) $true ''
 }
-foreach($name in @('UNITYPACKAGE-INSTALL.md','GRAMMAR-0.7.md','UNITY-EDITING.md')) {
+foreach($name in @('UNITYPACKAGE-INSTALL.md','BEGINNER-GUIDE.md','GRAMMAR-0.7.md','UNITY-EDITING.md')) {
     Add-Asset (Join-Path $root ('docs\'+$name)) ('Assets/HanCSharp/Documentation/'+$name) $false ''
 }
 Add-PayloadFile (Join-Path $root 'LICENSE') 'Tools/HanCSharp/licenses/HanCSharp-LICENSE.txt'

@@ -19,6 +19,12 @@ namespace HanCSharp.EditorSupport
         private static CompletionEntry[] CreateEntries()
         {
             var result = new List<CompletionEntry>();
+            Add(result, "쉬운 값 만들기", "«체력»은 100이다.", "이름을 먼저 적고 처음 값을 적습니다. 값의 종류는 자동으로 정합니다.");
+            Add(result, "쉬운 출력", "컴퓨터는 «\"안녕!\"»을 출력한다.", "컴퓨터(주어) → 보여줄 값(목적어) → 출력한다(동사) 순서입니다. 콘솔에 한 줄을 씁니다.");
+            Add(result, "쉬운 조건", "«체력»이 0보다 크다면:\n    컴퓨터는 \"아직 괜찮아!\"를 출력한다.\n아니라면:\n    컴퓨터는 \"쉬어야 해!\"를 출력한다.\n조건 끝.", "조건을 먼저 말하고 그때 할 일을 적습니다. 체력은 먼저 만들어 주세요.");
+            Add(result, "쉬운 되풀이", "3번 되풀이한다:\n    컴퓨터는 «\"안녕!\"»을 출력한다.\n되풀이 끝.", "안쪽의 일을 세 번 합니다.");
+            Add(result, "쉬운 동작 만들기", "«인사하기»는 이렇게 한다:\n    컴퓨터는 \"안녕!\"을 출력한다.\n동작 끝.\n인사하기를 실행한다.", "여러 일을 한 이름으로 묶고 이름을 불러 실행합니다.");
+            Add(result, "쉬운 유니티 부품", "«HanEasyMover»는 유니티 부품이다:\n    조절할 이동속도는 4이다.\n\n    처음 시작할 때:\n        이 물체는 \"출발!\"을 기록한다.\n    동작 끝.\n\n    매 순간:\n        이 물체는 오른쪽으로 초당 이동속도만큼 움직인다.\n    동작 끝.\n부품 끝.", "파일명과 부품 이름을 맞추고 물체에 붙이세요. 세계 좌표의 오른쪽(+X)으로 움직입니다.");
             foreach (string type in _types)
                 result.Add(new CompletionEntry(type, type, "자료형입니다. 변수·필드·인수·반환형 위치에서 사용합니다."));
             foreach (string modifier in _modifiers)
@@ -125,6 +131,14 @@ namespace HanCSharp.EditorSupport
             }
             string source = new string(clean);
             const string identifier = @"@?[\p{L}_][\p{L}\p{N}_]*?";
+            foreach (string sentence in source.Split('\n'))
+            {
+                Match natural = Regex.Match(sentence.Trim(), @"^(?:조절할 )?(?<name>" + identifier + @")(?:은|는) (?:.+이다\.|이렇게 한다:)$");
+                if (natural.Success && natural.Groups["name"].Value != "컴퓨터")
+                    yield return Symbol(natural.Groups["name"].Value, "문장으로 만든 값 또는 동작");
+                Match component = Regex.Match(sentence.Trim(), @"^(?<name>" + identifier + @")(?:은|는) 유니티 부품이다:$");
+                if (component.Success) yield return Symbol(component.Groups["name"].Value, "유니티 부품");
+            }
             foreach (Match match in Regex.Matches(source, @"\b(?:클래스|함수)\s+(?<name>" + identifier + @")(?=\(|:|(?:은|는)\s)"))
                 yield return Symbol(match.Groups["name"].Value, "클래스 또는 함수");
             foreach (string line in source.Split('\n'))
