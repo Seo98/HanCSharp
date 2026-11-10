@@ -6,6 +6,8 @@
             <ui:Button name="openSource" text="한씨 원본 열기" />
             <ui:Button name="refresh" text="저장된 원본 새로고침" />
             <ui:Button name="openError" text="오류 행 열기" />
+            <ui:Toggle name="autoRefresh" text="저장 후 자동 갱신" />
+            <ui:Button name="safeUpdate" text="안전한 업데이트" />
         </ui:VisualElement>
         <ui:Label name="status" class="han-status" text="미리보기는 파일을 수정하지 않습니다. 외부 편집기에서 저장한 내용만 표시합니다." />
         <ui:Label text="Unity C# 오류 — 컴파일 후 원본 행 열기 버튼이 표시됩니다." class="han-status" />

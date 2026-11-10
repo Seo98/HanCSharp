@@ -8,9 +8,9 @@ public static class HanCSharpProcess
 {
     public static bool Convert(string dotNetPath, string compilerPath, string input, string output, out string message, bool emitSourceMap = false, bool writeLineMap = false)
     {
-        // Windows 배포본은 런타임이 포함된 EXE를 우선 사용한다. 다른 환경은 dotnet + DLL로 실행한다.
+        // Unity 패키지는 DLL만 설치한다. 이전 설치의 EXE가 남아 있어도 새 DLL을 우선한다.
         string executable = Path.ChangeExtension(compilerPath, ".exe");
-        bool useExecutable = Path.DirectorySeparatorChar == '\\' && File.Exists(executable);
+        bool useExecutable = !File.Exists(compilerPath) && Path.DirectorySeparatorChar == '\\' && File.Exists(executable);
         var start = new ProcessStartInfo
         {
             FileName = useExecutable ? executable : dotNetPath,

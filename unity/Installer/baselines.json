@@ -1,0 +1,1411 @@
+{
+  "provenance": [
+    {
+      "version": "0.5.0",
+      "sha256": "86296d5ae11552ec883c10aa0103ed3bf6ddb9d528bf8d2ec94b46ccc1e4fb99"
+    },
+    {
+      "version": "0.5.1",
+      "sha256": "5555d2a7bef9ba1c248236b8bbb2c77156b4c996c72bfe53a3855d6ebce5bdf5"
+    },
+    {
+      "version": "0.6.0",
+      "sha256": "7f1ada9c9376c24dcdc4788a57bdb621a5b72e3710891e2328d45560cbcca506"
+    },
+    {
+      "version": "0.7.0",
+      "sha256": "1fd729653d3148598e69149de4e31b6312d8f9b6a06b63f23e28e458ad2abdb0"
+    }
+  ],
+  "entries": [
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpAssetPostprocessor.cs",
+      "hashes": [
+        "6b8934463edf85e3eacb21744e8dd3a074e87049a90fd42f6dc3d9b7c0d671bc"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpAssetPresentation.cs",
+      "hashes": [
+        "97a4b2a0db6d22f9f7a7319bbc69a714703837b22645a2a1eaeb1d9852e76a09"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpCreateMenu.cs",
+      "hashes": [
+        "59851d5175a6f823c1c9354f0f310230bee26c986cf243a3d78326cc799b9204"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpDemoStartup.cs",
+      "hashes": [
+        "93e701f6fb7397073a9834a494f4e011f584bdbc2ec37324f658b2452258b53e",
+        "c1663668f2269d8f3a4e82e165ac0251feb08b8a07f0438069a4d4cb66c3e610"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpDiagnostics.cs",
+      "hashes": [
+        "ead0f007ed32e8bb32a052cfb9a2eee1ec4edd03e6c823c9ff219311d608934b"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpGenerator.cs",
+      "hashes": [
+        "40d05fc07228fe2e2a243ecc1ac002feca26a9670bca84c72e7000afee36a275",
+        "ac11c518629b82fd8d4ee53bf5535a22347a0d21e559f3615a6ffadf23819b16"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpPreview.cs",
+      "hashes": [
+        "3014dc7c06644aa08a2d93eb78fcba68408e8a8b135d19527a49958420a4a629"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpProcess.cs",
+      "hashes": [
+        "16a90f3a1118f96ba98c4c2e15cc9b20eeb2bc4e566b0403e261efa4f958ad9b",
+        "e7cb505c2cc4aa164d62c047a6b55dfc9a1ef5ad8cfb392f4e55836ce4a76666"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpProjectIntegration.cs",
+      "hashes": [
+        "0de145c42ee2abfffbec98c7e4ed604156c1769a925f7ce253b3b2c6b240dc26",
+        "4345a198194217aed713314ed2868a7114aa73a9c2a3d2b08e52bd6901e5bb09"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpScriptTemplates.cs",
+      "hashes": [
+        "8cbce59148420c963256cf5e50f853e67c35a60b10e2703e5f5bcc11d101f7ac",
+        "e507c8df163de710e6bbc5399c945e49fc5b2c4bef6a7c7ee33fbf8ea8367e54"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpSettings.cs",
+      "hashes": [
+        "34e57756ff1962ad9a0608240735ad0175abd46a4d7bb5dde6d44002ed2a3bf1"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpSourceMap.cs",
+      "hashes": [
+        "468c62da72e599a07e0eeb69fd7a2107d68e85a22be5a372b936d3b1ba7c8fbc"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpWorkbench.cs",
+      "hashes": [
+        "77e90de8b84caafb66f47ae82d6b5de7bc735630385b3b046a1cd16d628a2d57"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpWorkbench.uss",
+      "hashes": [
+        "6d6e69837677451b1875f28aef08a3b0959f030323ab157299658aa08cb6b2f9"
+      ]
+    },
+    {
+      "path": "Assets/HanCSharp/Editor/HanCSharpWorkbench.uxml",
+      "hashes": [
+        "ee33ef41bef817883a282099c5a436a1be2ce24467a64fb965fb5558820893fa"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/HanCSharp.Cli.deps.json",
+      "hashes": [
+        "ac16980d00f631f6bbb5f77893cf4f0e9d80b585a2d16016388058e29c39911d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/HanCSharp.Cli.dll",
+      "hashes": [
+        "471e7fcea4abef768f6d3c7bef6ee98d150c9a7338b783fd487e1825d10968b9",
+        "e57b630981f39a7100ad04e70db3fcb68a24f8f8346557d4edbf3820f69f9c98",
+        "fa9b00819d164b24e8fcec3ffb50a5f9890f1728b9ab0849e90a4f3796337fbf"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/HanCSharp.Cli.runtimeconfig.json",
+      "hashes": [
+        "47703f9c91f449f9cc59043c63d1e18946a7d013be9ad4d75575aee07518e896"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/HanCSharp.Core.dll",
+      "hashes": [
+        "48efd2b033c7671f88b1ce55cf032d69d96370a8eb8672b55c08f4a10252914f",
+        "92da24237db939b324f0a49617619a9e01cef4b22c06d2c60489d82622281a97",
+        "d7ea9356475739166ac3aef06dcbee45bc106d323b3e8f4fa5d5572964c96eb9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.CSharp.dll",
+      "hashes": [
+        "235a5787d4cb10067c5df6490a0faed1a2bb79982c39d54fda20faa7e49eb649"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.CodeAnalysis.CSharp.dll",
+      "hashes": [
+        "b4b55bcd02940ba7c07c30e885e32aaeb31c7bc1869c4e2827c04ff7cb5b1c40"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.CodeAnalysis.dll",
+      "hashes": [
+        "795626e520d1f26bcb078d4f7eec1dfecd2cf0d894f091fb803520c912a2376f"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.DiaSymReader.Native.amd64.dll",
+      "hashes": [
+        "315a61c47c41b8d4c815f4274bb6584c1d24b4640c7eedc354ed5b03a9a1361e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.VisualBasic.Core.dll",
+      "hashes": [
+        "0b3992488278de0f6b43f2974bc9f418f56cf066844fe9d70f794d1f4e657f2d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.VisualBasic.dll",
+      "hashes": [
+        "b303fce493e42d03a9a81fe3959aea19169853ee76ea097fd5e47a2c4f6dc2d5"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.Win32.Primitives.dll",
+      "hashes": [
+        "65201a499ea8746d7f2fed07ffa62385a1a498d19295632b3e60fb763c8beb14"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/Microsoft.Win32.Registry.dll",
+      "hashes": [
+        "7dc7332edc017c150d22cc57955ad4a3bff07b787bbcafce8d43c667d8a9f141"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.AppContext.dll",
+      "hashes": [
+        "e5225f900a1385cb697e7ee7872bd8baaa237af3b32b1150a05800dc27247a69"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Buffers.dll",
+      "hashes": [
+        "6b29f79aff590ed90a3eda450be419dc1e2adf6abeb9d5e8b5f979babed9ed1d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Collections.Concurrent.dll",
+      "hashes": [
+        "6459b4d59fa07ad30fbaf6d27c9cacfb55545ef1671d08695061819da58944e8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Collections.Immutable.dll",
+      "hashes": [
+        "ac53d3db4d4200f6c675a4136ae15ec06d4fb61d063e3ca3cee8cb083e319762"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Collections.NonGeneric.dll",
+      "hashes": [
+        "501be5c4ee99d568e28b595975461f48901ecb97f03c00afa23f75e73de6bf18"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Collections.Specialized.dll",
+      "hashes": [
+        "4dcc1c521ca236164b5f70e6f658788aa04f058df6fb6063d2b04b0a3ad7f16a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Collections.dll",
+      "hashes": [
+        "a1678070c2d90d68a65d718f2a715e616e10b308e75730a93b4b005d61711eff"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ComponentModel.Annotations.dll",
+      "hashes": [
+        "1c80d4cff8dba3679a4c26c7b26059706401a8e3a8939b7a9be11e138db8417a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ComponentModel.DataAnnotations.dll",
+      "hashes": [
+        "50e56c432ce32085e617eb848be3d628814f7e597fb24c93b7a8830fa829f7e0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ComponentModel.EventBasedAsync.dll",
+      "hashes": [
+        "1c2ceb1f977bd89e18f12ec8916452bb75ab4a0e9060628ebd5ce3ab5fe145ca"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ComponentModel.Primitives.dll",
+      "hashes": [
+        "58fff85527912147d2ff13ff68723637f3eee884a3cf4a4d87968e54635cc6da"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ComponentModel.TypeConverter.dll",
+      "hashes": [
+        "d7cde5d62cc9438a9085f159000f839d0ea4e9ae9a5eaa801f0aaf8407c1df10"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ComponentModel.dll",
+      "hashes": [
+        "487139c20a014bd73c9f86dbafc63ff973cf2ba2cc78017ed62ecab68cd66bec"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Configuration.dll",
+      "hashes": [
+        "09dcf2a7c11a2a2da684d469a9d4f13bd91bfcb5dba567a813093fda46ca7cfc"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Console.dll",
+      "hashes": [
+        "403606705d5e0da35f30030d0466b758d40c92e32919406be40292b6bb2741f2"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Core.dll",
+      "hashes": [
+        "27e0ff54824929fb81dfe4c3ecc0dd6e847f227a791f0266c72a62217300b5e1"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Data.Common.dll",
+      "hashes": [
+        "477c8f098a8ce27acce702ad1cd60227a79605e99b16520646f800117b53e0c7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Data.DataSetExtensions.dll",
+      "hashes": [
+        "43f06db7097fbbd799d72d424a3a9e66723e4503a131131f2a0ec2547669e332"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Data.dll",
+      "hashes": [
+        "258c582ee571ee4b35cb653795dcc0e98f10f5548ae613cf532dd24c6a41a2c7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.Contracts.dll",
+      "hashes": [
+        "092fb9c862c76498aba612116a93b3739824656ba1fbebf28b403282073a7673"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.Debug.dll",
+      "hashes": [
+        "ce2afb02a0c66f1ae31d7fbd19500b4657021db287b8835d1215c83683c43970"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.DiagnosticSource.dll",
+      "hashes": [
+        "20655fd586e5fb97190b21ba8184cae7ed9bc4166b18ed440087d5de00e6d7a4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.FileVersionInfo.dll",
+      "hashes": [
+        "c27260735facea3b0595d23f669fd2e3dc3e16a06faf0ebb68f7c2885ad3a157"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.Process.dll",
+      "hashes": [
+        "c015317bcca77a55f80895d4d921eaeedf175193ded1ff698c40e5c0d79ee141"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.StackTrace.dll",
+      "hashes": [
+        "a1fe5219938531ff709c9170b8b9b0bd85768b00a32cce2f06ada7eb357374ae"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.TextWriterTraceListener.dll",
+      "hashes": [
+        "32786e5e989ec440fcd2a3185590dcb1755efbcb77a2d207ef2d3c8e003f4163"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.Tools.dll",
+      "hashes": [
+        "e22a43d230d28827b57e062d6495627833c6d30d35284ea4a209c99062fabd99"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.TraceSource.dll",
+      "hashes": [
+        "969e7a3ea18d141d68497ba091f19c1c9a20e37bd41aec60a82976176d1a8295"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Diagnostics.Tracing.dll",
+      "hashes": [
+        "e2e60d4c30909f2f055142f2a29d4e9ee2699a9919ead263fec1f52cd2853a57"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Drawing.Primitives.dll",
+      "hashes": [
+        "0257de24e0fd8d775537455b2c82133bdce03d498c7ed419847025919796c5f8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Drawing.dll",
+      "hashes": [
+        "eb9000ddd4a9cf0e8cedb28d91322158069953aa0986c8e1d2aff6a4fce18bc8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Dynamic.Runtime.dll",
+      "hashes": [
+        "f2fbd13c537c888fb4b0ed378d4319752c68967c33a3b2c7bc8c46a4218030d8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Formats.Asn1.dll",
+      "hashes": [
+        "a974e8590717eb6634743119e8b829e3f264c9892d7220289f7b4f94ae439178"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Formats.Tar.dll",
+      "hashes": [
+        "8236436760941afd0edcea5e327b49357c6d3d2a67aedc74a8a812cac9544e42"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Globalization.Calendars.dll",
+      "hashes": [
+        "82b27b37cbc92c957b4973c013bc4ee0b1defd96cf3495612fa07ab9e816ae2b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Globalization.Extensions.dll",
+      "hashes": [
+        "8424384ccb5704d3b07df01c1124cacd220fd56839ced0fb8ba56b8ebd98dffe"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Globalization.dll",
+      "hashes": [
+        "79c229c7902e2e1d6e06a751f56fe61752c10292330e0e839dd726e97a8fa4c3"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Compression.Brotli.dll",
+      "hashes": [
+        "103a72b74a42da1989e595588ae91f110570919ea2460794d2dbccb62160b91b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Compression.FileSystem.dll",
+      "hashes": [
+        "82df6b53ba8bd2039d83574a07d262b763501851ed0d3d872eac13cc1c02cf89"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Compression.Native.dll",
+      "hashes": [
+        "40ff70c31c1687150d48dc8a13789674c3c8170b7c84cd69f2f34eabc146bdd9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Compression.ZipFile.dll",
+      "hashes": [
+        "60df46d771d22ec82cecd32c05ee698af3237a256cbb3b887599df0d381c70e6"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Compression.dll",
+      "hashes": [
+        "0ef64d72a7c70dd2ce233957060802e490cccb48fb5719d64aa90b9c66ded1c0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.FileSystem.AccessControl.dll",
+      "hashes": [
+        "885a135c7ab8d8b5b4b788db493768819f09b04148f50e30f11d037967657398"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.FileSystem.DriveInfo.dll",
+      "hashes": [
+        "1802ba42c10ed64b54ef52afaf0dd836f94abe5fd22bb3a317e54212897bfcbd"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.FileSystem.Primitives.dll",
+      "hashes": [
+        "a7e7e321c74fedc41b31a0b5edf2694f5fad248ab9ca0d93bae447c7eba8fcfa"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.FileSystem.Watcher.dll",
+      "hashes": [
+        "7f6d23207756c294b75ae29670d0d263d5dfb461f1739a4a61503cb0f97176e6"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.FileSystem.dll",
+      "hashes": [
+        "86687014e49ab350b13ab3f5b81b41e513653380cf9375f44cf4c4007e8ee1d1"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.IsolatedStorage.dll",
+      "hashes": [
+        "3cbf2a560fb9361c38e4447af852297b622e8f3826dee4a94fc1390dc3153817"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.MemoryMappedFiles.dll",
+      "hashes": [
+        "a3379d7dd24d45cb596b04025df9624f9411376edb6eb7107797871350ce903d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Pipelines.dll",
+      "hashes": [
+        "c7d8465632d63958c21e0a26422692f136df0b36a9de0af85edd6500b4affaa7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Pipes.AccessControl.dll",
+      "hashes": [
+        "2f61412e1ea72dffaa7c7147dac0129e1cb14a072ffcaecc93c6a08aa38b311a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.Pipes.dll",
+      "hashes": [
+        "4d2ad65d3f3898679b7e4471f53492905c78d400adb67973a5741fa7f35e55d0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.UnmanagedMemoryStream.dll",
+      "hashes": [
+        "77f3216caa9d0e9b6dafdaa7a25265a114364bf17421deaadbf356e5b7e86c60"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.IO.dll",
+      "hashes": [
+        "a109c78f9e3ab211bea7aa59dc1524ef916153581552762b9432fd6146aa8587"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Linq.Expressions.dll",
+      "hashes": [
+        "7d35ca6f7fbdb4d4e60c389c416c3307dc8d0065d154e102c861baf7ad220d79"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Linq.Parallel.dll",
+      "hashes": [
+        "790c272673f483096bf42d08ecee12fb57867f987bce82dd3d477578292b5bab"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Linq.Queryable.dll",
+      "hashes": [
+        "9f2a335d4f9bb7f223bb106a14951f0322748d2b858b5703e3947759fcc4acb6"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Linq.dll",
+      "hashes": [
+        "9a8d2c808c3e8ccfa06347631a1234b962d3203f640264ec6758989342084a50"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Memory.dll",
+      "hashes": [
+        "f6baf64228681be128cc26aecf9cf9f367425fa380afc2a7a100fad1f1e5da3a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Http.Json.dll",
+      "hashes": [
+        "3e2f40167112d0c3098dbf8e724561c05dc3140e3e53c2a9fe5028b02e1f3262"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Http.dll",
+      "hashes": [
+        "c910663b4a9a8490b72998ad917a3433812d76d6695177f41564024e583b6da7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.HttpListener.dll",
+      "hashes": [
+        "49c5e36412a669a97f8bad0460a9bd42bb367866978843a3a465c613ad1cf5e9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Mail.dll",
+      "hashes": [
+        "d50f6fe97dd8f66e4f5f14457036b20ced523505e8d94a6b254b3797fbc2c149"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.NameResolution.dll",
+      "hashes": [
+        "9e9d480c80a6f8d5b659c7655518cc93c31a3b4c35de96c1ae57e958da0d4f7e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.NetworkInformation.dll",
+      "hashes": [
+        "f8fc08080d44efc3da121f64bca8a78bab8321d826b27b154d560c67f059cc6c"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Ping.dll",
+      "hashes": [
+        "4f5841c6d98877c35192547bfe06dc42790dd00550c31119aa3f4199a819ec15"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Primitives.dll",
+      "hashes": [
+        "ccce978f3702e6129db4c5e03dd57530d3e69881235b2ceccc4829efbe3d983d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Quic.dll",
+      "hashes": [
+        "3845c7021f1f0718f2ef189c04bcadb3b791a6b46d9cf884a5bbd1a41b8b7b5c"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Requests.dll",
+      "hashes": [
+        "b4a9e634b53ec61dea0b3035fc76219c868f7c1ed12d48395067e7fcfd54eba8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Security.dll",
+      "hashes": [
+        "ec7af21039267a9f962d2b1df7ec46dbf35466195b403b66432598fa530d2044"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.ServicePoint.dll",
+      "hashes": [
+        "cf36ec7106dc7ef0b5d4770e2bdcc5dd122f7c425a757b4b9923ad715e74c004"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.Sockets.dll",
+      "hashes": [
+        "0428374fb188e49ce3a46a38c92d0cdf8bd183a0f075893970bc0650c797c6eb"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.WebClient.dll",
+      "hashes": [
+        "6189c5bc505e4a1924e8c6a715f3d4c65b6d413bc2e4529f9f0f41782df4f310"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.WebHeaderCollection.dll",
+      "hashes": [
+        "89e3bf47fc414358c68b0c63d951ff59741c4ed71ffdc71ecf561bbf8872f9e8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.WebProxy.dll",
+      "hashes": [
+        "e072fd657ac5dbf88a8e3d359cf73322f968e9fa70961da8019f0fa3043f48bf"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.WebSockets.Client.dll",
+      "hashes": [
+        "a361136d814b89ea866fc4d2ee3b2ca70e012eac054d8de1550d104895131513"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.WebSockets.dll",
+      "hashes": [
+        "44536317941be165d82cb448dd7ca4243b41ceb86f83116fb3d95cc7d8dc4f07"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Net.dll",
+      "hashes": [
+        "9f58a14ff8a5ceb4c36d51e222c7a8fcb8eebc4b3ee21d05f1db914334009794"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Numerics.Vectors.dll",
+      "hashes": [
+        "0f99fa6d06d3a541ca024874bbdf80ce577728d16ca0e13462195e7034f67c80"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Numerics.dll",
+      "hashes": [
+        "562cd07a2228f51f27cf745d5c2daa10e32cb7fdf9c4edc3e2bff3db2a6da7fe"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ObjectModel.dll",
+      "hashes": [
+        "79436b55b6a6c0ccc9fbd9898bc63fead3571b88e46b409eb84486e657990218"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Private.CoreLib.dll",
+      "hashes": [
+        "102d81ead6043a7f309e134ffe329eaac7bc509a01a4da12a59acc99c5ef7ba3"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Private.DataContractSerialization.dll",
+      "hashes": [
+        "a18d58e48a1b1fcd87aa803d364f5b92c04e5e59bfb9afee573ed951dba9a005"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Private.Uri.dll",
+      "hashes": [
+        "8e94533bea94805e28882324ac2626ecf7ed05c7516e1388c9994244fd10e164"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Private.Xml.Linq.dll",
+      "hashes": [
+        "26d179e66f1826b01630e4df715eb4b8e6145a7067a762a126d52bf6076c2cd3"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Private.Xml.dll",
+      "hashes": [
+        "6933a94b79fb342da26d36db4cc3a5a920191ec80d688f62dd7d7d02a3c4b8ac"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.DispatchProxy.dll",
+      "hashes": [
+        "4116db5ee628d75cef7b32a31d0813701aa5fa165c04a216db0d16d4a8728a11"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.Emit.ILGeneration.dll",
+      "hashes": [
+        "62b93ce9040c3fd2fa1fc95a2cf4367d6487d5ad41b0b7a9a6dcb6a1dd3721e6"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.Emit.Lightweight.dll",
+      "hashes": [
+        "916236b8be45456c2cda012c9b54bba8435bfda74c5af0a16b1eda03e434401b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.Emit.dll",
+      "hashes": [
+        "26ef0bd104cf198b95687ad01a8e6d98e17b922bc9c3c7e3fe96c33a6b3c0828"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.Extensions.dll",
+      "hashes": [
+        "879ba13919b3bcae6fbd42fbc4edf9791b85f1632a3201ac474fe8ae58b6e9b0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.Metadata.dll",
+      "hashes": [
+        "dc2e2bbf29bd9f8c41542b6a128b0620d0919e53b68bc928315112ab70bb45a7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.Primitives.dll",
+      "hashes": [
+        "d8c5a095415f5ff6542720b79d44e978ab6049917e2a92aed57ca4f473611318"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.TypeExtensions.dll",
+      "hashes": [
+        "fb868acc2220de8aec5506cf1059fa9b6d387e5667f5f0a71e703b9ec0a0af8c"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Reflection.dll",
+      "hashes": [
+        "01b3bf4ddcf60af9d7657ea981e1748384bd152c134ce6c46afc9530dcc1677f"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Resources.Reader.dll",
+      "hashes": [
+        "6962254e62a757db83ff1e9d45b560d656f5317fcea9e5d1c6d936814f1078b3"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Resources.ResourceManager.dll",
+      "hashes": [
+        "ab4a81ad9e90f850f88b660ba08a789820d44219126cb163d102bae58bd96cdd"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Resources.Writer.dll",
+      "hashes": [
+        "19de6b9f39a5ffec51a39d16edd7f178150d1d88153862265a0d4787468514d0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.CompilerServices.Unsafe.dll",
+      "hashes": [
+        "4305a737ad2a25be6857722e3a08adbe76291ea934c3d50c9e0f8ea56747b18a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.CompilerServices.VisualC.dll",
+      "hashes": [
+        "fb28a4e393a31d5e2d485f7d965343dd83f230b868ffaa546d88b590b933d16a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Extensions.dll",
+      "hashes": [
+        "205a35a9835bf25179ff3a1a5298ae5a21332544a50dfabbdca100f16c8861e4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Handles.dll",
+      "hashes": [
+        "462d0dbf5c66c1c7882d690c5afd7f9fb34d6285e1eb386e0c225140c6384f32"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.InteropServices.JavaScript.dll",
+      "hashes": [
+        "14dad5550db073627746e1b5145d98b537a9b2648816af286f837ab1257bda43"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.InteropServices.RuntimeInformation.dll",
+      "hashes": [
+        "1c64dd6fcab7741ade0347e7d7da3a0267ebd84aaa265af976129ea636ba646b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.InteropServices.dll",
+      "hashes": [
+        "32f3fea2a41b4d57b592a373824bac90160b7229947b4a594a7bebb8cca8e7e5"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Intrinsics.dll",
+      "hashes": [
+        "743d71f5d8b9ee98abcc32261e82270459d1429da75b57e68d0fc469b2fe6dcd"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Loader.dll",
+      "hashes": [
+        "ed879ed4fc6ad01f622894e162c2d1db1d7e90e614fdd097b42dc3740b423e2c"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Numerics.dll",
+      "hashes": [
+        "72c08d8a504a38b214075b0976336de093be3dc54048b6b1043039802fbf64ea"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Serialization.Formatters.dll",
+      "hashes": [
+        "5bd5425de4301982be7e91172623533baeea32959747403840de21e8b76c12aa"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Serialization.Json.dll",
+      "hashes": [
+        "00dc0a24c6dc53cfa642d7051d55fd5dd6cbc3cd9561da8553b2019cbea31cb5"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Serialization.Primitives.dll",
+      "hashes": [
+        "a899b6fca05222da45f0b5a06f47a427979492095934f5467de62d326c1e4dc7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Serialization.Xml.dll",
+      "hashes": [
+        "5a492b1a1ff913bf8dc0d2f72990703b2604710cd0f05e83205418a8cf0be82d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.Serialization.dll",
+      "hashes": [
+        "a6f5dc2df099c41f27bf2300aef3652fc60460717cfeea00e133c97acd008762"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Runtime.dll",
+      "hashes": [
+        "ee988b9650e41d3bcc1a51afbe692c726a85198e4f0413afb2cc15e89b593ff6"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.AccessControl.dll",
+      "hashes": [
+        "fa36d3c8465125a0feb4fa991c8eefaa3064f10aedbdaddb6fe82f37b11055e0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Claims.dll",
+      "hashes": [
+        "691cae194932f5b327f1437843e22ff512b0e5b8335c92354c8aed412f034155"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.Algorithms.dll",
+      "hashes": [
+        "8e2f8ff7b1b50c9b26812b8277c46da37661477901cbc95d25a20932931743f9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.Cng.dll",
+      "hashes": [
+        "ab99c41775145163e88f678dba259fc26d276bbf4775bbd3c7f4e775dce9f472"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.Csp.dll",
+      "hashes": [
+        "531cbcb53324bea7eeb9d6c59150e32d35f4af1a3c11acdcffae397113515c97"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.Encoding.dll",
+      "hashes": [
+        "425dfc8f0f409956b06e6f8b1c749f2aa0dee4c29b2341b26688feee87fcb3f1"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.OpenSsl.dll",
+      "hashes": [
+        "3f77220cfcb2067924f50bc82e98fa4d7c00c3c2f32d95f3f2a608597e88468e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.Primitives.dll",
+      "hashes": [
+        "db0b41ff3b6166e0122214ca9836755bce253c04b64a121bfc7b520948e472bf"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.X509Certificates.dll",
+      "hashes": [
+        "08241376c1da2b303bc0db9eb4bce56e1ef7ef593d75cba11add84eb6622dda4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Cryptography.dll",
+      "hashes": [
+        "9b316e126092c8ab4011ff522e215e02327816cde1b32597ffceccb635882325"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Principal.Windows.dll",
+      "hashes": [
+        "5d907b693f0aaee378c2f132a7a78dddd415325f732619883d728058e669fa68"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.Principal.dll",
+      "hashes": [
+        "048045dad2019e421657871e191e13cd9ed3dd48cddfae9c36ec690b13ce8f82"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.SecureString.dll",
+      "hashes": [
+        "a156e7c3d80d3d7251eef1de03b7625a2486116931f8f4d5775013dc44eef948"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Security.dll",
+      "hashes": [
+        "11d55d099c95d85bbdfab938e1fa63cfb29940d1c5a3e7bea135379dae831dc4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ServiceModel.Web.dll",
+      "hashes": [
+        "93bef1b84cdce689405507dca969ac632ef512310dcd5e3a07d6af5b04ed1a65"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ServiceProcess.dll",
+      "hashes": [
+        "6e77083e4aa88a430eeded18915059b3a23afc7199e99296b1c4cd63843b12b8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Text.Encoding.CodePages.dll",
+      "hashes": [
+        "a07c6aa6eddfac36701869a033395994514a66c8601c092fd925b60efc3b6818"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Text.Encoding.Extensions.dll",
+      "hashes": [
+        "21d592707b1f5520d8218da1699e6fcbacf90f8d1e54dc6b5ad0dc8bcbe488e4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Text.Encoding.dll",
+      "hashes": [
+        "4628bc458f71632856922efa85ab7931b61e9dad8140d67a18a4c9aaab3b45c3"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Text.Encodings.Web.dll",
+      "hashes": [
+        "6861630b7f5fd268bb47d62402c997c9a5885dba8e57358a1751b2e9a2a79e2d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Text.Json.dll",
+      "hashes": [
+        "4708c1358afe306b4d40f13646b6afb1277b11d0f582bb09532189c9311b01a1"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Text.RegularExpressions.dll",
+      "hashes": [
+        "b55f694934e5e04c51b3ae601c5d968e17a4f88f7dcb788c4180b2d0d5a1365e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Channels.dll",
+      "hashes": [
+        "dc2ecf6283abf0389399a653bb2ce31689f4b3e0166633f3ee213215adfd5d43"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Overlapped.dll",
+      "hashes": [
+        "487bf36e50d5e993cb4fd6aaad0cc85dfa3b01b74c6edb400b0a20a1dc032467"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Tasks.Dataflow.dll",
+      "hashes": [
+        "d12b1656863c9ec1b1d3e25af627d0ca218fa3efc45563e45b74c75e0971232a"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Tasks.Extensions.dll",
+      "hashes": [
+        "00aef588af213f11b62275650eb3c0d22cce3ee03099288abe0e915576d20e9e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Tasks.Parallel.dll",
+      "hashes": [
+        "a0169d10c9760357f8c7315bbf61a0442aa0bbb391cac5fb21974076bcfc2d1d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Tasks.dll",
+      "hashes": [
+        "f354c33a60ca9dee00dffa1b9865a99d45234a6b615d63850644117c33884ff4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Thread.dll",
+      "hashes": [
+        "11c0fae6fdb731b0a76b7ca983fbc2fdc664f546ac6503e99275a0c089a7b44e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.ThreadPool.dll",
+      "hashes": [
+        "7d6f018cdbfe517be8aabfe5679038eb31ab2c03af68ca6d93095874b0ea077b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.Timer.dll",
+      "hashes": [
+        "c2daa90e26cf4f91bd38b1af9141f587538ae34e48b5ce593de87468d3e1504b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Threading.dll",
+      "hashes": [
+        "5968714e9981bd67a04230c3d082620e87e7384994f92facef0a3ca30bbc56fb"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Transactions.Local.dll",
+      "hashes": [
+        "0aa8e601690611ca25e103f50db7b2bbe5e506613ae131337f0af495369fd7a6"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Transactions.dll",
+      "hashes": [
+        "93571b496ba152b475d859b2494c095981480ae167412d1d5a4a39c555aafd90"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.ValueTuple.dll",
+      "hashes": [
+        "a54325d3f252d65c560d8b04a62f071d69852cf446789fdc69f3297d381d23a1"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Web.HttpUtility.dll",
+      "hashes": [
+        "056128d37a944f5be096531771232e16bb48c5eabe522b5d93388f6dc8c99060"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Web.dll",
+      "hashes": [
+        "8959eea37c8a286609b9862a5a93f810b00613668ecc4790f5a407067f200801"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Windows.dll",
+      "hashes": [
+        "608969c896a57375be3394a5dcabf387fd039663e178bfbf80da7b13fbf0d946"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.Linq.dll",
+      "hashes": [
+        "36ba7808412d71a25a7565179ef970b917a077c558b4f6e3c93ddd3c5893a3a9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.ReaderWriter.dll",
+      "hashes": [
+        "cc6028116825a6838a488ff077e066d4ab7da880bbe5db88031b034152ba62c7"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.Serialization.dll",
+      "hashes": [
+        "b06765ef74f67254c41e7ebbd0ae8fe1b7d9dca9d8d6e3dfc3d459310167fb49"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.XDocument.dll",
+      "hashes": [
+        "d2fd5caf84079510ccdeefa58351afd91a25793b15b2b1de33caa794617778b4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.XPath.XDocument.dll",
+      "hashes": [
+        "04f7ce12b94df167952c6aa13b562da63ac03af4b60f5693c1f2b3a705f9f483"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.XPath.dll",
+      "hashes": [
+        "b223606111581e4800554c07f18f9722b879f38ecf7f13340d6862a29a6f33e5"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.XmlDocument.dll",
+      "hashes": [
+        "134154b97c5d37b444138a01b60cf2259dae96fff3c48593545cc668a3a9e0a0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.XmlSerializer.dll",
+      "hashes": [
+        "84f58497581f6ad263d3be0c527a487b3d55439c752fbac601cd2497d1fedf09"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.Xml.dll",
+      "hashes": [
+        "8be7d0d8cfe9cd0ffe36ceb39429f7c75a098a8a844cb90f58f7a942d6ce264c"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/System.dll",
+      "hashes": [
+        "7b5b0c0931006846cef72fcf366fcc5aecd297a41faafa3698b00bf549d4747d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/WindowsBase.dll",
+      "hashes": [
+        "7a41b603fd44a6574883d404787761c4cbb848ca8d8b0f27a486548fff7a02f3"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/clretwrc.dll",
+      "hashes": [
+        "ff9cc4b2715a4755a47d7191c67d144842cf4076b527295f0520339c5399d7a4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/clrgc.dll",
+      "hashes": [
+        "db1430832aca250fa14de87fd01d78b0a41cdafc7df3c7a31d6e63ef0c73348d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/clrgcexp.dll",
+      "hashes": [
+        "570d5bd5a257ddc5e09485a948eed0dfd213ed1bd5315fda90cf360a2c2b17f5"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/clrjit.dll",
+      "hashes": [
+        "f835649ea3f5e15e432262bbbcb412ceb590142435c1a565d0aa91d52927dbda"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/coreclr.dll",
+      "hashes": [
+        "e0a32a3b5e45a5024d86a5464fa6eac6be941786b42ad99b15580467900acece"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/cs/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "dcd167011369faa025bbde851e2d2527e0235ff6d7d12f49823f8df909378f92"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/cs/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "ad779e01f7936cf1e0a191bef75f90128c8bd8ca1866a7eacc35d841ba26c82c"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/de/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "ca14177ebb90edcb73f59ee11dd69f474707355f1402f22b58c3bac1e469fa22"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/de/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "42b0de1b2e8b44754d5ba3fb1753fd67361942f45e068faae24b71af6aa02cb8"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/es/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "fe539b61b1378d1910b4251056be6e6ca20fcd7af8ab9ea1b3afbff3f9321f1e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/es/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "dd2c4141901ea94813daeca1411ef41c2e5ef5b9743a45b99c094a075863322f"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/fr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "4d3a7ea83e38d80b3c84c32b8adec5c1ff12f17e2c3d4a6a4f196c5b92a34041"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/fr/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "505edd9a47a1630b4c87a1aba4605d3dd1b786d6cc6be89111352c8c89b85d3e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/hostfxr.dll",
+      "hashes": [
+        "b569dfb48ae024e236be55987bec36f92f7e38cf42b3b62307c0bbedd3798a34"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/hostpolicy.dll",
+      "hashes": [
+        "8a5fa832f88f3e7bc1a7ebe34343a733e15a359d6642b197e2141dd3652f88d2"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/it/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "df0e655f7736efc5d0cd73fc9349ebb1893a00e7a993ed71fa07dddba8c829d0"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/it/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "9f1436f0faa2a7aa694f0de010385316bb1c3615b6f15de5d36d5542f949f59b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/ja/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "21c674e16eba7831daea3929d09b17d72a426a0f43d2a03b762f0175f0f8263e"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/ja/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "cd3413c7398a81961cabf5e0fb4a056b897708e0abf7d2c6231e002352a246cc"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/ko/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "ff119de82a2695367ac77f0c3f40fa5da8f2ab4b80c30e683984b69e0d9fb6b4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/ko/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "50b79f5f42083fece4f3bd0db8c478fa9c8345133ca52035e6bbb73bfa5fd421"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/mscordaccore.dll",
+      "hashes": [
+        "6e587a5b4080c42ad5896db5e6008dca45aa8e7798ed15c98b7e112fceb9c025"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/mscordaccore_amd64_amd64_9.0.1125.51716.dll",
+      "hashes": [
+        "6e587a5b4080c42ad5896db5e6008dca45aa8e7798ed15c98b7e112fceb9c025"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/mscordbi.dll",
+      "hashes": [
+        "38230da6d8159c327ff113fac5cd83faa28b02e647f00e4dffb39057e7737236"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/mscorlib.dll",
+      "hashes": [
+        "710a4954eae6085039813f8aae9cd0cf9918e4e747fd5f3e2d54139c0723749d"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/mscorrc.dll",
+      "hashes": [
+        "76a15fc2e2eb5c1c254754cd433e87a6aa4514c25bbc80021f15ee3316f7ef63"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/msquic.dll",
+      "hashes": [
+        "b2b7fd2dc05b0009acd3f0de7ba443c660c87b1308774a5811fdb8873a76de78"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/netstandard.dll",
+      "hashes": [
+        "6dd21805f65371b582efda4141082db9c24d0ea9234f8117cc7e5a2c6b181f88"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/pl/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "62fd0626b8141c368d449f22b8ac6852537bec6062f1afeced8fab8b24b7f379"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/pl/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "3ef094eb8b0110f3850bf9d1d418ef711220cc965001858bef7827aeca51a904"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "1201db5dd48787c5a6a371b3b0e861b3bab8b854307d1df13f363f97a1dbca34"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/pt-BR/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "358f1b499b78a1fc8f618cb49efc2fa30e956e62e221fe50cc9183bca6c6e0b9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/ru/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "3794d6bbb75f9d4995003987661f49f5b1ead74f787b5229f5d7de32c3ca2c55"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/ru/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "f82e6eefad07e6fd0b35c32b977b6ff29e302198e66b9164a40bc2e59d0f5bc4"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/tr/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "b5c28d630bc50f8f38833f683c9cfe0eea1b39fa1ff6ab8c56e76c028275b891"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/tr/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "59e1cebabbf728c23836ee89ebffe29ad21e7b73f6cd81571ed50f5b731285ee"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "0bc947c23e4b838b780ffd883b1a9952712755168a9defb8c05856ae48ada9a9"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/zh-Hans/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "cfc78e010eb31c78603d2a949ac82f871538594e300dd1f7fc0b3a6c49f96f2b"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll",
+      "hashes": [
+        "791abd0a13698491595602c837581b5d0688ed0db8f200b94eab85102bdbc910"
+      ]
+    },
+    {
+      "path": "Tools/HanCSharp/zh-Hant/Microsoft.CodeAnalysis.resources.dll",
+      "hashes": [
+        "9519e4de5514add743e3feacd0413a7b552e659756a6dd7fc6ef27bcc246483e"
+      ]
+    }
+  ]
+}

@@ -16,6 +16,12 @@ public sealed class HanCSharpWorkbench : EditorWindow
     private Button _error;
     private int _errorLine;
     private int _request;
+    [SerializeField] private bool _autoRefresh = true;
+    private readonly HanCSharpPreviewWatch _watch = new HanCSharpPreviewWatch();
+    private double _nextPoll;
+    private bool _converting;
+    private bool _refreshQueued;
+    private bool _active;
 
     [MenuItem("Tools/HanCSharp/변환 미리보기")]
     public static void OpenSelected()
@@ -44,14 +50,18 @@ public sealed class HanCSharpWorkbench : EditorWindow
 
     private void OnEnable()
     {
+        _active = true;
         Selection.selectionChanged += SelectionChanged;
         HanCSharpDiagnostics.Changed += ShowCompilationErrors;
+        EditorApplication.update += PollSavedSource;
     }
 
     private void OnDisable()
     {
+        _active = false;
         Selection.selectionChanged -= SelectionChanged;
         HanCSharpDiagnostics.Changed -= ShowCompilationErrors;
+        EditorApplication.update -= PollSavedSource;
         _request++;
     }
 
@@ -68,6 +78,14 @@ public sealed class HanCSharpWorkbench : EditorWindow
         _status = rootVisualElement.Q<Label>("status");
         _refresh = rootVisualElement.Q<Button>("refresh");
         _error = rootVisualElement.Q<Button>("openError");
+        var autoRefresh = rootVisualElement.Q<Toggle>("autoRefresh");
+        autoRefresh.SetValueWithoutNotify(_autoRefresh);
+        autoRefresh.RegisterValueChangedCallback(change => _autoRefresh = change.newValue);
+        rootVisualElement.Q<Button>("safeUpdate").clicked += () =>
+        {
+            if (!EditorApplication.ExecuteMenuItem("Tools/HanCSharp/설치 및 안전한 업데이트"))
+                _status.text = "설치 도구가 없습니다. 최신 HanCSharp.unitypackage를 먼저 가져오세요.";
+        };
         _refresh.clicked += RefreshPreview;
         rootVisualElement.Q<Button>("openSource").clicked += () => OpenSource(1);
         _error.clicked += () => OpenSource(_errorLine);
@@ -106,6 +124,12 @@ public sealed class HanCSharpWorkbench : EditorWindow
 
     private async void RefreshPreview()
     {
+        if (_converting)
+        {
+            _refreshQueued = true;
+            _request++;
+            return;
+        }
         int request = ++_request;
         _errorLine = 0;
         _error.SetEnabled(false);
@@ -120,11 +144,15 @@ public sealed class HanCSharpWorkbench : EditorWindow
             return;
         }
         string source = _source;
+        try { _watch.Observe(source, File.ReadAllText(source), EditorApplication.timeSinceStartup, true); }
+        catch (IOException) { /* 변환기가 저장 상태를 다시 확인한다. */ }
+        catch (System.UnauthorizedAccessException) { /* 변환 결과에 접근 오류를 표시한다. */ }
         var settings = HanCSharpSettings.LoadOrCreate();
         string dotNet = settings.DotNetPath;
         string compiler = settings.CompilerPath;
         _refresh.SetEnabled(false);
         _status.text = "변환 중…";
+        _converting = true;
         HanCSharpPreview result;
         try
         {
@@ -132,14 +160,23 @@ public sealed class HanCSharpWorkbench : EditorWindow
         }
         catch (System.Exception exception)
         {
-            if (this != null && request == _request)
+            if (this != null && _active && request == _request)
             {
                 _status.text = exception.Message;
                 _refresh.SetEnabled(true);
             }
             return;
         }
-        if (this == null || request != _request)
+        finally
+        {
+            _converting = false;
+            if (_refreshQueued && this != null && _active)
+            {
+                _refreshQueued = false;
+                EditorApplication.delayCall += RefreshIfActive;
+            }
+        }
+        if (this == null || !_active || request != _request)
             return;
         _refresh.SetEnabled(true);
         _sourceText.value = WithLineNumbers(result.SourceText);
@@ -148,6 +185,30 @@ public sealed class HanCSharpWorkbench : EditorWindow
         _errorLine = result.ErrorLine;
         _error.SetEnabled(_errorLine > 0);
         ShowCompilationErrors();
+    }
+
+    private void RefreshIfActive()
+    {
+        if (this != null && _active)
+            RefreshPreview();
+    }
+
+    private void PollSavedSource()
+    {
+        if (!_active || !_autoRefresh || _status == null || string.IsNullOrEmpty(_source))
+            return;
+        double now = EditorApplication.timeSinceStartup;
+        if (now < _nextPoll)
+            return;
+        _nextPoll = now + 0.25;
+        try
+        {
+            string content = File.Exists(_source) ? File.ReadAllText(_source) : null;
+            if (_watch.Observe(_source, content, now, _converting))
+                RefreshPreview();
+        }
+        catch (IOException) { /* 편집기가 저장 중이면 다음 주기에 다시 읽는다. */ }
+        catch (System.UnauthorizedAccessException) { /* 잠시 접근할 수 없는 원본은 재시도한다. */ }
     }
 
     private void ShowCompilationErrors()

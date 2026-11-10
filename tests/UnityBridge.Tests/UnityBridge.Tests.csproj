@@ -5,6 +5,6 @@
     <EnableDefaultCompileItems>true</EnableDefaultCompileItems>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../../unity/Editor/*.cs" Exclude="../../unity/Editor/HanCSharpDemoStartup.cs;../../unity/Editor/HanCSharpAssetPresentation.cs;../../unity/Editor/HanCSharpWorkbench.cs;../../unity/Editor/HanCSharpDiagnostics.cs" Link="Editor/%(Filename)%(Extension)" />
+    <Compile Include="../../unity/Editor/*.cs" Exclude="../../unity/Editor/HanCSharpDemoStartup.cs;../../unity/Editor/HanCSharpAssetPresentation.cs;../../unity/Editor/HanCSharpWorkbench.cs;../../unity/Editor/HanCSharpDiagnostics.cs;../../unity/Editor/HanCSharpInstallCompletion.cs" Link="Editor/%(Filename)%(Extension)" />
   </ItemGroup>
 </Project>

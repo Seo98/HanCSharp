@@ -1,3 +1,7 @@
+# v0.8.0 검증
+
+현재 결과는 [v0.8 검증](docs/RELEASE-CHECK-0.8.md), 설치는 [Unity 패키지 가이드](docs/UNITYPACKAGE-INSTALL.md)를 보세요. 자동 검증 103개와 실제 Unity 설치·백업·충돌 차단·미리보기 저장 갱신을 구분해 기록했습니다.
+
 # v0.7.0 검증
 
 최신 결과는 [v0.7 검증](docs/RELEASE-CHECK-0.7.md), 문법은 [새 문법 안내](docs/GRAMMAR-0.7.md)를 보세요. 아래는 과거 배포 기록입니다.

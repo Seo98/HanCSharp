@@ -1,4 +1,4 @@
-name: Build Windows release
+name: Validate Unity package payload
 on:
   workflow_dispatch:
 permissions:
@@ -12,28 +12,25 @@ jobs:
         with:
           dotnet-version: 9.0.x
       - name: Validate language
-        shell: pwsh
         run: dotnet run --project tests/HanCSharp.Tests
       - name: Validate completion catalog
-        shell: pwsh
         run: dotnet run --project editor-support/EditorSupport.Tests
-      - name: Validate Unity bridge and preview without Editor
+      - name: Validate Unity bridge
         shell: pwsh
         run: |
           dotnet publish src/HanCSharp.Cli -c Release -o app --self-contained false
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           dotnet run --project tests/UnityBridge.Tests -- C:\han-bridge-ci
+      - name: Validate safe update and preview watcher
+        run: dotnet run --project tests/Updater.Tests -- C:\han-update-ci
       - name: Build Visual Studio extension
         shell: pwsh
         run: ./editor-support/Build-Extension.ps1
-      - name: Validate installer and short-path preparation
+      - name: Build DLL payload without EXE
         shell: pwsh
-        run: dotnet run --project tools/Launcher.Tests -- C:\han-ci-check
-      - name: Build release ZIP
-        shell: pwsh
-        run: ./tools/Build-Release.ps1
+        run: ./tools/Build-UnityPayload.ps1 -OutputDirectory artifacts/UnityRelease
       - uses: actions/upload-artifact@v4
         with:
-          name: HanCSharp-Windows-x64
-          path: artifacts/HanCSharp-Windows-x64.zip
+          name: HanCSharp-UnityPayload
+          path: artifacts/UnityRelease/HanCSharp-UnityPayload.zip
           if-no-files-found: error

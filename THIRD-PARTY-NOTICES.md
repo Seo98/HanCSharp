@@ -4,7 +4,9 @@
 
 Unity와 Unity Package Manager 의존 패키지는 각 배포자의 라이선스를 따릅니다. samples/UnityMovementDemo의 Unity 템플릿 설정 및 manifest는 엔진 예제를 열기 위한 구성으로 포함하며, Unity 엔진이나 패키지 소스를 이 저장소의 MIT 라이선스로 재허가하지 않습니다.
 
-Windows 런타임 포함 배포본에는 Microsoft.NETCore.App 런타임도 들어 있습니다. 해당 런타임의 라이선스와 타사 고지는 배포본 `app/licenses/`에 포함합니다. 소스 빌드의 app-portable에서는 `app-portable/licenses/`에 있습니다.
+v0.8 Unity 패키지는 .NET 런타임을 포함하지 않습니다. Roslyn DLL의 라이선스는 설치된 `Tools/HanCSharp/licenses/THIRD-PARTY-NOTICES.md`에 포함합니다. 런타임은 사용자가 Microsoft 공식 사이트에서 직접 설치합니다.
+
+v0.7 이하 Windows 런타임 포함 배포본에는 Microsoft.NETCore.App 런타임도 들어 있습니다. 해당 과거 배포의 라이선스와 타사 고지는 `app/licenses/`에 포함합니다.
 
 Source: https://github.com/dotnet/roslyn/blob/main/License.txt
 

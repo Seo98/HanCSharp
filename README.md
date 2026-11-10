@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**[Windows 실행 ZIP 다운로드](https://github.com/Seo98/HanCSharp/releases/latest/download/HanCSharp-Windows-x64.zip)** · **[Markdown 가이드 목차](docs/README.md)** · **[Unity 이동 예제](samples/UnityMovementDemo/README.md)**
+**[Unity 패키지 다운로드](https://github.com/Seo98/HanCSharp/releases/latest/download/HanCSharp.unitypackage)** · **[Markdown 가이드 목차](docs/README.md)** · **[Unity 이동 예제](samples/UnityMovementDemo/README.md)**
 
 한국어 문장을 C#으로 변환하고, C# 코드도 다시 한국어 문장으로 표현하는 개인 언어 프로토타입입니다. **Visual Studio 솔루션·빌드 연결·Unity 연결 코드·한씨 편집기 확장**을 포함합니다.
 
@@ -18,11 +18,12 @@
 
 ## 시작
 
-**처음이라면:** [실행 ZIP 받기](https://github.com/Seo98/HanCSharp/releases/latest) → 모두 압축 풀기 → **START-HAN.cmd** 더블클릭. 콘솔 예제가 자동으로 실행됩니다. 이어서 **② Unity 이동 예제 준비·실행**을 누르면 짧은 폴더에 프로젝트를 준비하고 이동 씬을 엽니다. Unity 6000.3.25f1은 별도 설치해야 합니다.
+**처음이라면:** [.NET 10 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)을 직접 설치한 뒤 **HanCSharp.unitypackage**를 Unity에 가져오세요. **Tools → HanCSharp → 설치 및 안전한 업데이트 → 패키지 파일 검사 → 검사한 파일을 백업 후 적용** 순서로 설치합니다. EXE 실행 파일이나 런타임을 동봉하지 않습니다.
 
-Windows x64 실행 ZIP에는 .NET 런타임이 포함됩니다. Unity에 설치한 뒤 Project 창에서 **우클릭 → Create → HanCSharp → 한씨 컴포넌트**로 새 원본을 만들 수 있습니다.
+업데이트는 미리보기의 **안전한 업데이트**에서 공식 배포 조회·SHA-256 확인·변경 목록 검토 후 적용합니다. 수정한 도구는 충돌로 차단하고 기존 예제·설정·메타 파일은 보존합니다. 저장 후 미리보기 자동 갱신도 기본으로 켜집니다.
 
-- [처음 사용자 단계별 가이드](docs/QUICKSTART.md)
+- **[필수 프로그램·설치·업데이트·Unity 이동 예제 전체 안내](docs/UNITYPACKAGE-INSTALL.md)**
+- [처음 사용자 빠른 시작](docs/QUICKSTART.md)
 - [GitHub 공개·배포 가이드](docs/GITHUB-PUBLISH.md)
 
 다음은 개발용 소스를 빌드해 사용하는 방법입니다.

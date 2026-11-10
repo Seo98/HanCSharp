@@ -1,8 +1,8 @@
 # 한씨로 큐브 움직이기
 
-Windows 배포본은 **START-HAN.cmd → ② Unity 이동 예제 준비·실행**을 사용합니다. 짧은 폴더에 압축된 템플릿과 변환기를 준비한 뒤 Unity 6000.3.25f1로 이동 씬을 엽니다. 배포 ZIP에는 이 폴더의 프로젝트 대신 `templates/UnityMovementDemo.zip`을 넣었습니다. 직접 압축을 풀어 쓰기보다 시작 창을 이용하세요.
+v0.8 배포본은 **HanCSharp.unitypackage**입니다. [.NET Runtime 설치부터 Unity 예제 연결까지의 가이드](../../docs/UNITYPACKAGE-INSTALL.md)를 보세요. 배포 패키지는 기존 씬·입력 설정을 바꾸지 않으며 예제 컴포넌트를 직접 연결해 사용합니다.
 
-GitHub 소스 체크아웃에서는 이 폴더가 Unity 프로젝트 루트입니다. .NET 9 SDK로 도구를 먼저 준비합니다.
+아래는 저장소에 남겨둔 기존 전체 씬 예제를 소스로 빌드하는 개발자용 방법입니다. 일반 사용자는 위 패키지 설치 가이드를 사용하세요. 이 폴더가 Unity 프로젝트 루트이며 .NET 9 SDK로 도구를 먼저 준비합니다.
 
 ```powershell
 dotnet publish src/HanCSharp.Cli -c Release -o app --self-contained false
