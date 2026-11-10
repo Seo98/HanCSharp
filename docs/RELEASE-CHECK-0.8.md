@@ -17,6 +17,7 @@
 - 실제 AssetDatabase.ExportPackage로 Assets/HanCSharpInstaller만 추출했습니다. 압축 포맷을 흉내 낸 파일이 아닙니다.
 - 비어 있는 새 QA 프로젝트에 최종 unitypackage를 가져와 내장 payload를 검사했습니다. 84개 파일 추가 계획, .NET 실행 확인과 적용 버튼 활성화를 확인했습니다.
 - 새 설치 적용 후 예제 5개의 C# 생성과 Unity 컴파일 성공을 확인했습니다. 설치 도구·DLL·예제만 추가하고 씬·입력 설정은 변경하지 않습니다.
+- 최종 패키지로 새 프로젝트에서 Cube를 만들고 Input/Mover 참조와 속도 4를 Inspector 직렬화로 연결했습니다. 첫 Play에서 두 컴포넌트가 활성 상태로 시작하는 것을 확인했습니다. 이 QA 씬·검증용 Pipeline은 배포 패키지에 포함하지 않았습니다.
 - 설치된 QA에서 갱신 대상 3개 파일의 실제 교체와 백업 해시 일치를 확인했습니다.
 - 설치된 Editor 파일에 사용자 주석을 추가했을 때 충돌과 전체 적용 차단, 버튼 비활성화, 수정 내용 보존을 확인하고 QA 변경을 복구했습니다.
 - Auto Generate를 끄고 미리보기에서 최초 표시·저장·연속 저장의 최종 내용·자동 갱신 끄기/다시 켜기·원본 삭제를 확인했습니다. 실제 C#은 생성되지 않았습니다.
@@ -32,7 +33,13 @@
 
 unitypackage는 설치 도구·내장 압축 데이터·안내문만 포함합니다. Payload의 manifest 84개 파일 SHA-256이 모두 일치하고 EXE가 없습니다. .NET Runtime은 사용자가 직접 설치합니다. 선택 VSIX는 문법이 같은 0.7을 유지합니다.
 
-공개 파일 재다운로드와 온라인 최신 배포 조회 결과는 배포 후 아래에 추가합니다.
+## 공개 배포 왕복 검증
+
+[v0.8.0 Release](https://github.com/Seo98/HanCSharp/releases/tag/v0.8.0)의 공개 주소에서 unitypackage·payload ZIP·VSIX·INSTALL.md를 익명으로 다시 내려받고 첨부 SHA256SUMS.txt와 전부 일치하는 것을 확인했습니다. unitypackage 내부의 압축 데이터가 공개 payload ZIP과 바이트 단위로 같았고, manifest 84개 파일 해시와 EXE 미포함도 다시 확인했습니다. VSIX 내부 버전은 0.7.0입니다.
+
+재다운로드한 DLL로 .NET 10.0.14에서 LanguageTour를 실행했습니다. 실제 Unity의 최신 배포 다운로드 기능도 공식 GitHub에서 v0.8.0을 받아 해시 검사 후 84개 항목 모두 보존인 재설치 계획을 표시했습니다.
+
+[GitHub Actions 42727715042](https://github.com/Seo98/HanCSharp/actions/runs/42727715042)에서 언어·편집 지원·Unity 연결·업데이트 검사, VSIX 빌드, EXE 없는 DLL payload 빌드가 모두 성공했습니다. CI는 Unity 패키지를 추출하거나 Play를 실행하지 않으며 위 실제 Unity 검증은 로컬에서 별도로 수행했습니다.
 
 ## 검증 범위
 
